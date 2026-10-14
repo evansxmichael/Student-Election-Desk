@@ -1,32 +1,77 @@
-# React + TypeScript + Vite
+# Campus Election Polling Desk
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An institutional, real-time voter turnout and attendance registration system designed for university campus elections. Features multi-device synchronization across polling officers' devices, role-based access control, and hybrid offline/cloud database persistence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Key Features
 
-## React Compiler
+- **Live Voter Roll**: Fast lookup and attendance marking across 490+ registered voters across multiple departments.
+- **Multi-Device Real-Time Sync**: Instant WebSocket synchronization between polling desk laptops and mobile phones.
+- **Hybrid Data Architecture**: Instant in-memory cache backed by local storage with seamless asynchronous PostgreSQL (Neon) cloud synchronization.
+- **Institutional Role-Based Access Control (RBAC)**:
+  - **Chief Election Officer (Admin)**: Full control, voter management, account administration, database synchronization.
+  - **Polling Agent / Officer (Editor)**: Ballot verification and attendance check-in.
+  - **Election Observer (Viewer)**: Read-only live turnout analytics and voter register browsing.
+- **Cryptographic Security**: PBKDF2 password hashing with unique salts, signed session tokens, and zero client-exposed credentials.
+- **Turnout Analytics**: Live metrics, hostel vs. day-scholar breakdown, department-level statistics, and voter roll export.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Frontend**: React 19, TypeScript, Tailwind CSS, Vite, Lucide Icons, Canvas Confetti
+- **Backend**: Node.js, Express, WebSockets (`ws`), PBKDF2 Cryptography
+- **Database**: PostgreSQL (Neon Cloud Serverless) + Local Hybrid Store
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## Getting Started
+
+### 1. Installation
+
+```bash
+git clone https://github.com/YOUR_USERNAME/campus-election-desk.git
+cd campus-election-desk
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Environment Configuration
+
+Create a `.env` file in the root directory (based on `.env.example`):
+
+```env
+DATABASE_URL="postgresql://user:pass@ep-xyz.neon.tech/neondb?sslmode=require"
+PORT=3001
+JWT_SECRET="your_secure_random_jwt_secret"
+ADMIN_INIT_PASS="your_admin_password"
+AGENT_INIT_PASS="your_agent_password"
+VIEWER_INIT_PASS="your_viewer_password"
+```
+
+### 3. Running Locally
+
+Start the backend sync server:
+```bash
+npm run server
+```
+
+Start the frontend application:
+```bash
+npm run dev
+```
+
+---
+
+## Deployment
+
+### Frontend (Vercel)
+1. Push this repository to GitHub.
+2. Import the project on [Vercel](https://vercel.com).
+3. Framework Preset: **Vite**.
+4. Deploy!
+
+### Multi-Device Sync Server (Render / Railway)
+1. Deploy as a Web Service on [Render](https://render.com) or [Railway](https://railway.app).
+2. Set Build Command to `npm install` and Start Command to `node server.js`.
+3. Add your `DATABASE_URL` and `JWT_SECRET` in the Environment Variables dashboard.
