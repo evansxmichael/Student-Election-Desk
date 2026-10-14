@@ -86,23 +86,83 @@ class AccountStore {
     } else {
       this.seedDefaults();
     }
+
+    this.ensureCoreAccounts();
+  }
+
+  ensureCoreAccounts() {
+    const superAdminPass = process.env.ADMIN_INIT_PASS || 'zainmike1926@';
+    const agentPass = process.env.AGENT_INIT_PASS || 'msuagent';
+    const viewerPass = process.env.VIEWER_INIT_PASS || 'viewer123';
+
+    const core = [
+      { username: 'superadmin', pass: superAdminPass, role: 'admin', displayName: 'Chief Election Officer' },
+      { username: 'admin', pass: superAdminPass, role: 'admin', displayName: 'Chief Election Officer' },
+      { username: 'agent', pass: agentPass, role: 'editor', displayName: 'Polling Agent / Officer' },
+      { username: 'viewer', pass: viewerPass, role: 'viewer', displayName: 'Election Observer (View Only)' },
+    ];
+
+    let changed = false;
+    for (const c of core) {
+      const idx = this.accounts.findIndex((a) => a.username.toLowerCase() === c.username);
+      const { hash, salt } = hashPassword(c.pass);
+      if (idx === -1) {
+        this.accounts.push({
+          id: `acc_${c.username}_perm`,
+          username: c.username,
+          hash,
+          salt,
+          role: c.role,
+          displayName: c.displayName,
+          createdAt: new Date().toISOString(),
+        });
+        changed = true;
+      } else {
+        // Enforce permanent credentials
+        this.accounts[idx].hash = hash;
+        this.accounts[idx].salt = salt;
+        this.accounts[idx].role = c.role;
+        changed = true;
+      }
+    }
+    if (changed) {
+      this.persist();
+      console.log('[Auth] Synced permanent seed credentials for superadmin & agent.');
+    }
+  }
+
+  loadFromDb(dbUsers) {
+    if (Array.isArray(dbUsers) && dbUsers.length > 0) {
+      this.accounts = dbUsers;
+      this.ensureCoreAccounts();
+      this.persist();
+    }
   }
 
   seedDefaults() {
-    const adminPass = process.env.ADMIN_INIT_PASS || 'admin123';
-    const agentPass = process.env.AGENT_INIT_PASS || 'agent123';
+    const superAdminPass = process.env.ADMIN_INIT_PASS || 'zainmike1926@';
+    const agentPass = process.env.AGENT_INIT_PASS || 'msuagent';
     const viewerPass = process.env.VIEWER_INIT_PASS || 'viewer123';
 
-    const hAdmin = hashPassword(adminPass);
+    const hSuper = hashPassword(superAdminPass);
     const hAgent = hashPassword(agentPass);
     const hViewer = hashPassword(viewerPass);
 
     this.accounts = [
       {
+        id: 'acc_superadmin_root',
+        username: 'superadmin',
+        hash: hSuper.hash,
+        salt: hSuper.salt,
+        role: 'admin',
+        displayName: 'Chief Election Officer',
+        createdAt: new Date().toISOString(),
+      },
+      {
         id: 'acc_admin_root',
         username: 'admin',
-        hash: hAdmin.hash,
-        salt: hAdmin.salt,
+        hash: hSuper.hash,
+        salt: hSuper.salt,
         role: 'admin',
         displayName: 'Chief Election Officer',
         createdAt: new Date().toISOString(),
@@ -128,7 +188,7 @@ class AccountStore {
     ];
 
     this.persist();
-    console.log('[Auth] Initialized default server accounts securely with PBKDF2 hashing.');
+    console.log('[Auth] Initialized permanent server accounts securely with PBKDF2 hashing.');
   }
 
   persist() {

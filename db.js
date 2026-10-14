@@ -57,6 +57,18 @@ class HybridDatabaseManager {
         );
         CREATE INDEX IF NOT EXISTS idx_students_roll ON students(roll);
         CREATE INDEX IF NOT EXISTS idx_students_status ON students(status);
+
+        CREATE TABLE IF NOT EXISTS app_users (
+          id VARCHAR(100) PRIMARY KEY,
+          username VARCHAR(100) UNIQUE NOT NULL,
+          hash TEXT NOT NULL,
+          salt TEXT NOT NULL,
+          role VARCHAR(50) NOT NULL,
+          display_name VARCHAR(255),
+          created_at TIMESTAMPTZ DEFAULT NOW(),
+          updated_at TIMESTAMPTZ DEFAULT NOW()
+        );
+        CREATE INDEX IF NOT EXISTS idx_users_username ON app_users(username);
       `);
 
       client.release();
@@ -272,6 +284,85 @@ class HybridDatabaseManager {
       }
     }
     this.isSyncing = false;
+  }
+
+  async fetchAllUsers() {
+    if (!this.isConnected || !this.pool) return null;
+    try {
+      const res = await this.pool.query('SELECT * FROM app_users ORDER BY created_at ASC');
+      return res.rows.map((r) => ({
+        id: r.id,
+        username: r.username,
+        hash: r.hash,
+        salt: r.salt,
+        role: r.role,
+        displayName: r.display_name,
+        createdAt: r.created_at,
+      }));
+    } catch (e) {
+      console.warn('[Neon/Postgres] fetchAllUsers notice:', e.message);
+      return null;
+    }
+  }
+
+  async batchSyncUsers(users) {
+    if (!this.isConnected || !this.pool || !users || !users.length) return;
+    try {
+      const client = await this.pool.connect();
+      try {
+        await client.query('BEGIN');
+        for (const u of users) {
+          await client.query(
+            `INSERT INTO app_users (id, username, hash, salt, role, display_name, created_at, updated_at)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
+             ON CONFLICT (username) DO UPDATE SET
+               hash = EXCLUDED.hash,
+               salt = EXCLUDED.salt,
+               role = EXCLUDED.role,
+               display_name = EXCLUDED.display_name,
+               updated_at = NOW()`,
+            [u.id, u.username, u.hash, u.salt, u.role, u.displayName, u.createdAt || new Date().toISOString()]
+          );
+        }
+        await client.query('COMMIT');
+        console.log(`[Neon/Postgres] Cloud synced ${users.length} user accounts.`);
+      } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+      } finally {
+        client.release();
+      }
+    } catch (err) {
+      console.warn('[Neon/Postgres] Batch sync users warning:', err.message);
+    }
+  }
+
+  async upsertUser(user) {
+    if (!this.isConnected || !this.pool) return;
+    try {
+      await this.pool.query(
+        `INSERT INTO app_users (id, username, hash, salt, role, display_name, created_at, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
+         ON CONFLICT (username) DO UPDATE SET
+           hash = EXCLUDED.hash,
+           salt = EXCLUDED.salt,
+           role = EXCLUDED.role,
+           display_name = EXCLUDED.display_name,
+           updated_at = NOW()`,
+        [user.id, user.username, user.hash, user.salt, user.role, user.displayName, user.createdAt || new Date().toISOString()]
+      );
+    } catch (err) {
+      console.warn('[Neon/Postgres] Upsert user warning:', err.message);
+    }
+  }
+
+  async deleteUser(username) {
+    if (!this.isConnected || !this.pool) return;
+    try {
+      await this.pool.query('DELETE FROM app_users WHERE LOWER(username) = LOWER($1)', [username]);
+    } catch (err) {
+      console.warn('[Neon/Postgres] Delete user warning:', err.message);
+    }
   }
 }
 

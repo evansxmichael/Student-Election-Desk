@@ -112,6 +112,15 @@ function broadcast(msg, senderWs = null) {
         console.log(`[Neon/Supabase] Cloud database is empty, syncing local roster (${students.length} voters)...`);
         await dbManager.batchSyncRoster(students);
       }
+
+      // Permanently reconcile user credentials with Neon PostgreSQL
+      const dbUsers = await dbManager.fetchAllUsers();
+      if (dbUsers && dbUsers.length > 0) {
+        accountStore.loadFromDb(dbUsers);
+        console.log(`[Auth] Loaded and synchronized ${accountStore.accounts.length} permanent accounts from Neon database.`);
+      } else {
+        await dbManager.batchSyncUsers(accountStore.accounts);
+      }
     }
   } else {
     console.log('[Neon/Supabase] Operating in instant Hybrid Local mode.');
@@ -259,29 +268,38 @@ app.get('/api/users', requireAdmin, (req, res) => {
   res.json(accountStore.getPublicUsers());
 });
 
-app.post('/api/users', requireAdmin, (req, res) => {
+app.post('/api/users', requireAdmin, async (req, res) => {
   const { username, password, role, displayName } = req.body;
   const result = accountStore.createUser({ username, password, role, displayName });
   if (!result.success) {
     return res.status(400).json(result);
   }
+  const created = accountStore.accounts.find((a) => a.username.toLowerCase() === username.trim().toLowerCase());
+  if (created) {
+    await dbManager.upsertUser(created);
+  }
   res.json(result);
 });
 
-app.put('/api/users/:username/password', requireAdmin, (req, res) => {
+app.put('/api/users/:username/password', requireAdmin, async (req, res) => {
   const { password } = req.body;
   const result = accountStore.updatePassword(req.params.username, password);
   if (!result.success) {
     return res.status(400).json(result);
   }
+  const updated = accountStore.accounts.find((a) => a.username.toLowerCase() === req.params.username.toLowerCase());
+  if (updated) {
+    await dbManager.upsertUser(updated);
+  }
   res.json(result);
 });
 
-app.delete('/api/users/:username', requireAdmin, (req, res) => {
+app.delete('/api/users/:username', requireAdmin, async (req, res) => {
   const result = accountStore.deleteUser(req.params.username, req.user.username);
   if (!result.success) {
     return res.status(400).json(result);
   }
+  await dbManager.deleteUser(req.params.username);
   res.json(result);
 });
 
