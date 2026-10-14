@@ -6,12 +6,6 @@ import {
   Volume2,
   VolumeX,
   ShieldCheck,
-  CheckCircle2,
-  ChevronRight,
-  User,
-  Eye,
-  Edit3,
-  Shield,
   LogOut,
 } from 'lucide-react';
 
@@ -132,14 +126,6 @@ export const Header: React.FC = () => {
 
           {/* User Account / Role Badge & Log Out */}
           <div className="flex items-center gap-2 pl-1 sm:pl-2 sm:border-l border-slate-200">
-            <div className="hidden lg:flex flex-col text-right">
-              <span className="text-[11px] font-bold text-slate-900 leading-tight">
-                {currentUser?.displayName || (userRole === 'admin' ? 'Chief Admin' : userRole === 'editor' ? 'Polling Agent' : 'Guest Viewer')}
-              </span>
-              <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
-                {userRole === 'admin' ? 'Admin Access' : userRole === 'editor' ? 'Editor Access' : 'View Only'}
-              </span>
-            </div>
             <button
               onClick={logout}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 border border-slate-200 hover:border-rose-200 text-xs font-bold touch-scale transition-all"
@@ -152,74 +138,10 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Election Header & Polling Status Banner */}
-      <div className="bg-[#fcfdfd] border-t border-slate-100 px-4 py-3.5 max-w-6xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          {/* Breadcrumb & Status Tags */}
-          <div>
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-              <span>Campus Election</span>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-              <span className="font-semibold text-slate-800">Live Polling Desk</span>
-            </div>
-
-            <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-              <span className="text-[11px] font-bold text-blue-700 tracking-wider uppercase">
-                Official Voting Roll
-              </span>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 text-[11px] font-semibold">
-                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                Verified Voter List
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-slate-600 font-medium bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
-                <User className="w-3 h-3 text-slate-500" />
-                {volunteerName}
-              </span>
-              <span
-                className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-md border ${
-                  userRole === 'admin'
-                    ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
-                    : userRole === 'editor'
-                    ? 'bg-blue-50 text-blue-700 border-blue-200'
-                    : 'bg-amber-50 text-amber-800 border-amber-200'
-                }`}
-              >
-                {userRole === 'admin' ? (
-                  <Shield className="w-3 h-3 text-indigo-600" />
-                ) : userRole === 'editor' ? (
-                  <Edit3 className="w-3 h-3 text-blue-600" />
-                ) : (
-                  <Eye className="w-3 h-3 text-amber-600" />
-                )}
-                Role: {userRole === 'admin' ? 'Main Admin' : userRole === 'editor' ? 'Polling Agent' : 'Viewer'}
-              </span>
-              <span className="inline-flex items-center gap-1 text-[11px] text-slate-500">
-                <span
-                  className={`w-2 h-2 rounded-full ${
-                    isWsConnected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'
-                  }`}
-                />
-                {isWsConnected ? 'Live Multi-Device Sync Active' : 'Offline Mode'}
-              </span>
-            </div>
-          </div>
-
-          {/* Institutional KPI Summary Badge */}
-          <div className="flex items-center gap-2 self-start sm:self-auto bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-2xs">
-            <div className="text-right">
-              <div className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">
-                VOTER PARTICIPATION
-              </div>
-              <div className="text-sm font-mono font-extrabold text-blue-700">
-                {stats.voted} / {stats.total}{' '}
-                <span className="text-xs font-semibold text-emerald-600">({stats.turnoutRate}%)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      {/* Election Header & Filter Bar */}
+      <div className="bg-[#fcfdfd] border-t border-slate-100 px-4 py-3 max-w-6xl mx-auto">
         {/* Mobile Search Bar (Visible on mobile) */}
-        <div className="mt-3 sm:hidden">
+        <div className="mb-2 sm:hidden">
           <div className="relative flex items-center">
             <Search className="w-4 h-4 absolute left-3 text-slate-400 pointer-events-none" />
             <input
@@ -240,84 +162,99 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Filter Chips (NJLI style pill buttons) */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pt-3 pb-1 no-scrollbar text-xs">
-          <button
-            onClick={() => setSelectedStatus('')}
-            className={`px-3 py-1 rounded-full font-bold transition-all shrink-0 touch-scale ${
-              !selectedStatus
-                ? 'bg-slate-900 text-white shadow-xs'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            All Students ({stats.total})
-          </button>
-          <button
-            onClick={() => setSelectedStatus(selectedStatus === 'Not yet marked' ? '' : 'Not yet marked')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedStatus === 'Not yet marked'
-                ? 'bg-amber-100 text-amber-900 border border-amber-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Pending ({stats.pending})
-          </button>
-          <button
-            onClick={() => setSelectedStatus(selectedStatus === 'Voted' ? '' : 'Voted')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedStatus === 'Voted'
-                ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Marked Voted ({stats.voted})
-          </button>
+        {/* Filter Chips + KPI Summary in one clean row */}
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar text-xs">
+            <button
+              onClick={() => setSelectedStatus('')}
+              className={`px-3 py-1 rounded-full font-bold transition-all shrink-0 touch-scale ${
+                !selectedStatus
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              All Students ({stats.total})
+            </button>
+            <button
+              onClick={() => setSelectedStatus(selectedStatus === 'Not yet marked' ? '' : 'Not yet marked')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedStatus === 'Not yet marked'
+                  ? 'bg-amber-100 text-amber-900 border border-amber-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Pending ({stats.pending})
+            </button>
+            <button
+              onClick={() => setSelectedStatus(selectedStatus === 'Voted' ? '' : 'Voted')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedStatus === 'Voted'
+                  ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Marked Voted ({stats.voted})
+            </button>
 
-          <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
+            <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
 
-          <button
-            onClick={() => setSelectedResidence(selectedResidence === 'Hostel' ? '' : 'Hostel')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedResidence === 'Hostel'
-                ? 'bg-blue-100 text-blue-900 border border-blue-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Hostel ({stats.hostelTotal})
-          </button>
-          <button
-            onClick={() => setSelectedResidence(selectedResidence === 'Outside' ? '' : 'Outside')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedResidence === 'Outside'
-                ? 'bg-purple-100 text-purple-900 border border-purple-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Outside / Day Scholar ({stats.outsideTotal})
-          </button>
+            <button
+              onClick={() => setSelectedResidence(selectedResidence === 'Hostel' ? '' : 'Hostel')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedResidence === 'Hostel'
+                  ? 'bg-blue-100 text-blue-900 border border-blue-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Hostel ({stats.hostelTotal})
+            </button>
+            <button
+              onClick={() => setSelectedResidence(selectedResidence === 'Outside' ? '' : 'Outside')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedResidence === 'Outside'
+                  ? 'bg-purple-100 text-purple-900 border border-purple-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Outside / Day Scholar ({stats.outsideTotal})
+            </button>
 
-          <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
+            <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
 
-          <button
-            onClick={() => setSelectedGender(selectedGender === 'Male' ? '' : 'Male')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedGender === 'Male'
-                ? 'bg-sky-100 text-sky-900 border border-sky-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Boys / Male ({stats.maleTotal})
-          </button>
-          <button
-            onClick={() => setSelectedGender(selectedGender === 'Female' ? '' : 'Female')}
-            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-              selectedGender === 'Female'
-                ? 'bg-pink-100 text-pink-900 border border-pink-300 font-bold'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-            }`}
-          >
-            Girls / Female ({stats.femaleTotal})
-          </button>
+            <button
+              onClick={() => setSelectedGender(selectedGender === 'Male' ? '' : 'Male')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedGender === 'Male'
+                  ? 'bg-sky-100 text-sky-900 border border-sky-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Boys / Male ({stats.maleTotal})
+            </button>
+            <button
+              onClick={() => setSelectedGender(selectedGender === 'Female' ? '' : 'Female')}
+              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+                selectedGender === 'Female'
+                  ? 'bg-pink-100 text-pink-900 border border-pink-300 font-bold'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              Girls / Female ({stats.femaleTotal})
+            </button>
+          </div>
+
+          {/* Institutional KPI Summary Badge */}
+          <div className="hidden sm:flex items-center gap-2 shrink-0 self-start sm:self-auto bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-2xs">
+            <div className="text-right">
+              <div className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">
+                VOTER PARTICIPATION
+              </div>
+              <div className="text-sm font-mono font-extrabold text-blue-700">
+                {stats.voted} / {stats.total}{' '}
+                <span className="text-xs font-semibold text-emerald-600">({stats.turnoutRate}%)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </header>

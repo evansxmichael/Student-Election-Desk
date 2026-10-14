@@ -2,7 +2,7 @@ import React from 'react';
 import { useElection } from '../context/ElectionContext';
 import { VoterCard } from './VoterCard';
 import { COURSES } from '../utils/constants';
-import { CheckCircle2, Filter, Plus, Sparkles, UserX } from 'lucide-react';
+import { Filter, Plus, Sparkles, UserX } from 'lucide-react';
 
 export const VoterList: React.FC = () => {
   const {
@@ -37,21 +37,6 @@ export const VoterList: React.FC = () => {
 
   return (
     <div className="pb-24 px-4 max-w-6xl mx-auto pt-4 space-y-4">
-      {/* Polling Instructions Card */}
-      <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-4 text-emerald-950 shadow-2xs">
-        <div className="flex items-start gap-2.5">
-          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-          <div className="text-xs leading-relaxed">
-            <span className="font-bold text-emerald-900 block mb-0.5">
-              Polling Instructions for Volunteers
-            </span>
-            <span className="text-emerald-800">
-              1. Check student ID card → 2. Search student name or roll number below → 3. Tap "Mark as Voted". Votes are updated live across all mobile polling desks.
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Election Hero Card */}
       <div className="bg-blue-50/60 border border-blue-200 rounded-2xl p-5 text-blue-950 shadow-2xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
