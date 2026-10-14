@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @layer base {
   * {
@@ -19,6 +19,15 @@
 .bg-subtle-card {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
+}
+
+/* Hide scrollbars for clean mobile pill navigation */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom scrollbars */

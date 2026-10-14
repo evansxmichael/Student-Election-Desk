@@ -12,7 +12,9 @@ export const VoterList: React.FC = () => {
     setSelectedCourse,
     searchQuery,
     setSearchQuery,
+    selectedResidence,
     setSelectedResidence,
+    selectedStatus,
     setSelectedStatus,
     setActiveTab,
     loadSampleData,
@@ -28,7 +30,7 @@ export const VoterList: React.FC = () => {
     setSelectedStatus('');
   };
 
-  const hasActiveFilters = searchQuery || selectedCourse;
+  const hasActiveFilters = Boolean(searchQuery || selectedCourse || selectedResidence || selectedStatus);
 
   return (
     <div className="pb-24 px-4 max-w-6xl mx-auto pt-4 space-y-4">
@@ -93,35 +95,37 @@ export const VoterList: React.FC = () => {
       </div>
 
       {/* Control Bar: Filter by Department + Counter */}
-      <div className="flex items-center justify-between gap-2 pt-2">
-        <div className="flex items-center gap-2 flex-1 min-w-0">
-          <Filter className="w-4 h-4 text-slate-400 shrink-0" />
-          <select
-            value={selectedCourse}
-            onChange={(e) => setSelectedCourse(e.target.value)}
-            className="bg-white border border-slate-200 text-xs text-slate-700 font-semibold rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100 max-w-[220px] truncate shadow-2xs"
-          >
-            <option value="">All Academic Departments</option>
-            {COURSES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-2 pb-1">
+        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+          <div className="flex items-center gap-2 flex-1 sm:flex-initial min-w-[200px] max-w-full">
+            <Filter className="w-4 h-4 text-slate-400 shrink-0" />
+            <select
+              value={selectedCourse}
+              onChange={(e) => setSelectedCourse(e.target.value)}
+              className="w-full sm:w-auto bg-white border border-slate-200 text-xs text-slate-700 font-semibold rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100 shadow-2xs"
+            >
+              <option value="">All Academic Departments</option>
+              {COURSES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {hasActiveFilters && (
             <button
               onClick={resetAllFilters}
-              className="text-xs text-blue-600 hover:text-blue-700 font-bold px-2 py-1 touch-scale"
+              className="text-xs text-blue-600 hover:text-blue-700 font-bold px-2.5 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 shrink-0 touch-scale transition-colors"
             >
               Reset
             </button>
           )}
         </div>
 
-        <span className="text-xs font-mono font-semibold text-slate-500 shrink-0">
+        <div className="text-xs font-mono font-medium text-slate-500 shrink-0 self-start sm:self-center pl-6 sm:pl-0">
           Showing <span className="font-bold text-slate-900">{filteredStudents.length}</span> of {students.length} voters
-        </span>
+        </div>
       </div>
 
       {/* Voter Cards List */}
