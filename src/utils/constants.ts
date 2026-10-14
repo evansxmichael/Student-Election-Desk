@@ -1,21 +1,21 @@
 import type { Student } from '../types';
 
 export const COURSES = [
-  'B.Tech (Computer Science)',
-  'B.Tech Civil (SF)',
-  'M.Tech (Computer Science)',
-  'MCA',
-  'B.Sc Interior Design',
-  'B.Sc Fashion Technology',
-  'Diploma Interior Design',
-  'Diploma Fashion Technology',
+  "B.Tech (Computer Science)",
+  "B.Tech Civil (SF)",
+  "M.Tech (Computer Science)",
+  "MCA",
+  "B.Sc Interior Design",
+  "B.Sc Fashion Technology",
+  "Diploma Interior Design",
+  "Diploma Fashion Technology"
 ];
 
 export const YEARS = [
-  '1st Year',
-  '2nd Year',
-  '3rd Year',
-  '4th Year',
+  "1st Year",
+  "2nd Year",
+  "3rd Year",
+  "4th Year"
 ];
 
 export const SAMPLE_STUDENTS: Student[] = [
@@ -28,7 +28,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_02",
@@ -39,7 +40,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_03",
@@ -50,7 +52,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_04",
@@ -61,7 +64,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_05",
@@ -72,7 +76,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_06",
@@ -83,7 +88,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_07",
@@ -94,7 +100,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_08",
@@ -105,7 +112,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_09",
@@ -116,7 +124,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs2_le_10",
@@ -127,7 +136,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_01",
@@ -138,7 +148,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_02",
@@ -149,7 +160,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_03",
@@ -160,7 +172,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_04",
@@ -171,7 +184,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.721Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_05",
@@ -182,7 +196,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_06",
@@ -193,7 +208,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_07",
@@ -204,7 +220,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_08",
@@ -215,7 +232,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_09",
@@ -226,7 +244,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_10",
@@ -237,7 +256,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_11",
@@ -248,7 +268,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_12",
@@ -259,7 +280,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_13",
@@ -270,7 +292,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_14",
@@ -281,7 +304,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_15",
@@ -292,7 +316,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_16",
@@ -303,7 +328,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_17",
@@ -314,7 +340,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_18",
@@ -325,7 +352,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_19",
@@ -336,7 +364,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_20",
@@ -347,7 +376,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_21",
@@ -358,7 +388,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_22",
@@ -369,7 +400,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_23",
@@ -380,7 +412,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_24",
@@ -391,7 +424,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_25",
@@ -402,7 +436,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_26",
@@ -413,7 +448,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_27",
@@ -424,7 +460,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_28",
@@ -435,7 +472,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_29",
@@ -446,7 +484,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_30",
@@ -457,7 +496,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_31",
@@ -468,7 +508,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_32",
@@ -479,7 +520,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_33",
@@ -490,7 +532,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_34",
@@ -501,7 +544,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_35",
@@ -512,7 +556,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_36",
@@ -523,7 +568,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_37",
@@ -534,7 +580,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_38",
@@ -545,7 +592,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_39",
@@ -556,7 +604,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_40",
@@ -567,7 +616,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_41",
@@ -578,7 +628,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_42",
@@ -589,7 +640,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_43",
@@ -600,7 +652,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_44",
@@ -611,7 +664,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_45",
@@ -622,7 +676,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_46",
@@ -633,7 +688,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_47",
@@ -644,7 +700,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_48",
@@ -655,7 +712,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_49",
@@ -666,7 +724,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_50",
@@ -677,7 +736,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_51",
@@ -688,7 +748,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_52",
@@ -699,7 +760,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_53",
@@ -710,7 +772,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_54",
@@ -721,7 +784,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_55",
@@ -732,7 +796,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_56",
@@ -743,7 +808,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_57",
@@ -754,7 +820,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_58",
@@ -765,7 +832,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_59",
@@ -776,7 +844,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs1_60",
@@ -787,7 +856,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs1_61",
@@ -798,7 +868,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_01",
@@ -809,7 +880,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A191123",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_02",
@@ -820,7 +892,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260023",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_03",
@@ -831,7 +904,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A191288",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_04",
@@ -842,7 +916,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A221859",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_05",
@@ -853,7 +928,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A180363",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_06",
@@ -864,7 +940,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A221865",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_07",
@@ -875,7 +952,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A201254",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_08",
@@ -886,7 +964,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A210040",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_09",
@@ -897,7 +976,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260024",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_10",
@@ -908,7 +988,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260025",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_11",
@@ -919,7 +1000,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260026",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_12",
@@ -930,7 +1012,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A221871",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_13",
@@ -941,7 +1024,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260027",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_14",
@@ -952,7 +1036,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A260028",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_15",
@@ -963,7 +1048,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A221899",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_16",
@@ -974,7 +1060,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A260029",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_17",
@@ -985,7 +1072,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A200828",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_19",
@@ -996,7 +1084,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A210062",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_20",
@@ -1007,7 +1096,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A221902",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_21",
@@ -1018,7 +1108,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A221898",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_22",
@@ -1029,7 +1120,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A260031",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_23",
@@ -1040,7 +1132,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A260032",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_24",
@@ -1051,7 +1144,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A230144",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_25",
@@ -1062,7 +1156,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Enroll: A210028",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs1_26",
@@ -1073,7 +1168,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A210023",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs1_27",
@@ -1084,7 +1180,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Enroll: A191380",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs2_18",
@@ -1095,7 +1192,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_08",
@@ -1106,7 +1204,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_2_16",
@@ -1117,7 +1216,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_29",
@@ -1128,7 +1228,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_13",
@@ -1139,7 +1240,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_04",
@@ -1150,7 +1252,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_05",
@@ -1161,7 +1264,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_04",
@@ -1172,7 +1276,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_20",
@@ -1183,7 +1288,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_13",
@@ -1194,7 +1300,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_56",
@@ -1205,7 +1312,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_49",
@@ -1216,7 +1324,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_27",
@@ -1227,7 +1336,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_38",
@@ -1238,7 +1348,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_37",
@@ -1249,7 +1360,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_30",
@@ -1260,7 +1372,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_47",
@@ -1271,7 +1384,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_03",
@@ -1282,7 +1396,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_07",
@@ -1293,7 +1408,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs2_21",
@@ -1304,7 +1420,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_14",
@@ -1315,7 +1432,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_07",
@@ -1326,7 +1444,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_03",
@@ -1337,7 +1456,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_16",
@@ -1348,7 +1468,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_17",
@@ -1359,7 +1480,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_id2_01",
@@ -1370,7 +1492,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_19",
@@ -1381,7 +1504,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_14",
@@ -1392,7 +1516,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_34",
@@ -1403,7 +1528,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_08",
@@ -1414,7 +1540,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_05",
@@ -1425,7 +1552,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_17",
@@ -1436,7 +1564,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_le_05",
@@ -1447,7 +1576,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_04",
@@ -1458,7 +1588,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_49",
@@ -1469,7 +1600,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_06",
@@ -1480,7 +1612,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_07",
@@ -1491,7 +1624,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id2_02",
@@ -1502,7 +1636,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_14",
@@ -1513,7 +1648,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft2_02",
@@ -1524,7 +1660,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_37",
@@ -1535,7 +1672,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_10",
@@ -1546,7 +1684,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_16",
@@ -1557,7 +1696,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_02",
@@ -1568,7 +1708,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_03",
@@ -1579,7 +1720,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_21",
@@ -1590,7 +1732,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_10",
@@ -1601,7 +1744,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_08",
@@ -1612,7 +1756,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_06",
@@ -1623,7 +1768,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_36",
@@ -1634,7 +1780,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft2_01",
@@ -1645,7 +1792,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_01",
@@ -1656,7 +1804,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_21",
@@ -1667,7 +1816,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_15",
@@ -1678,7 +1828,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_26",
@@ -1689,7 +1840,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_03",
@@ -1700,7 +1852,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_04",
@@ -1711,7 +1864,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_11",
@@ -1722,7 +1876,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_05",
@@ -1733,7 +1888,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_06",
@@ -1744,7 +1900,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_07",
@@ -1755,7 +1912,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_08",
@@ -1766,7 +1924,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_45",
@@ -1777,7 +1936,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_09",
@@ -1788,7 +1948,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_52",
@@ -1799,7 +1960,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_10",
@@ -1810,7 +1972,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_31",
@@ -1821,7 +1984,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_15",
@@ -1832,7 +1996,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_12",
@@ -1843,7 +2008,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_28",
@@ -1854,7 +2020,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_13",
@@ -1865,7 +2032,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_14",
@@ -1876,7 +2044,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_16",
@@ -1887,7 +2056,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_47",
@@ -1898,7 +2068,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_17",
@@ -1909,7 +2080,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_18",
@@ -1920,7 +2092,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_23",
@@ -1931,7 +2104,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_19",
@@ -1942,7 +2116,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_20",
@@ -1953,7 +2128,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_21",
@@ -1964,7 +2140,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_22",
@@ -1975,7 +2152,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_24",
@@ -1986,7 +2164,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_25",
@@ -1997,7 +2176,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_27",
@@ -2008,7 +2188,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_35",
@@ -2019,7 +2200,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_36",
@@ -2030,7 +2212,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_32",
@@ -2041,7 +2224,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_34",
@@ -2052,7 +2236,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_50",
@@ -2063,7 +2248,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_55",
@@ -2074,7 +2260,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_39",
@@ -2085,7 +2272,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_40",
@@ -2096,7 +2284,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_41",
@@ -2107,7 +2296,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_48",
@@ -2118,7 +2308,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_42",
@@ -2129,7 +2320,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_43",
@@ -2140,7 +2332,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_57",
@@ -2151,7 +2344,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_44",
@@ -2162,7 +2356,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_46",
@@ -2173,7 +2368,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_53",
@@ -2184,7 +2380,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_51",
@@ -2195,7 +2392,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_54",
@@ -2206,7 +2404,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_10",
@@ -2217,7 +2416,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_09",
@@ -2228,7 +2428,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mtech_cs2_02",
@@ -2239,7 +2440,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_01",
@@ -2250,7 +2452,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_02",
@@ -2261,7 +2464,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_33",
@@ -2272,7 +2476,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_38",
@@ -2283,7 +2488,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_12",
@@ -2294,7 +2500,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_01",
@@ -2305,7 +2512,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_02",
@@ -2316,7 +2524,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_03",
@@ -2327,7 +2536,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_04",
@@ -2338,7 +2548,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_05",
@@ -2349,7 +2560,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_06",
@@ -2360,7 +2572,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_07",
@@ -2371,7 +2584,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_08",
@@ -2382,7 +2596,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_09",
@@ -2393,7 +2608,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_11",
@@ -2404,7 +2620,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_12",
@@ -2415,7 +2632,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_13",
@@ -2426,7 +2644,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_14",
@@ -2437,7 +2656,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_15",
@@ -2448,7 +2668,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_16",
@@ -2459,7 +2680,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_17",
@@ -2470,7 +2692,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_18",
@@ -2481,7 +2704,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_19",
@@ -2492,7 +2716,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_20",
@@ -2503,7 +2728,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_21",
@@ -2514,7 +2740,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_22",
@@ -2525,7 +2752,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_23",
@@ -2536,7 +2764,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_24",
@@ -2547,7 +2776,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_25",
@@ -2558,7 +2788,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_26",
@@ -2569,7 +2800,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_28",
@@ -2580,7 +2812,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_29",
@@ -2591,7 +2824,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_30",
@@ -2602,7 +2836,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_31",
@@ -2613,7 +2848,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_32",
@@ -2624,7 +2860,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_33",
@@ -2635,7 +2872,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_35",
@@ -2646,7 +2884,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_36",
@@ -2657,7 +2896,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_37",
@@ -2668,7 +2908,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_39",
@@ -2679,7 +2920,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_40",
@@ -2690,7 +2932,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_41",
@@ -2701,7 +2944,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_42",
@@ -2712,7 +2956,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_43",
@@ -2723,7 +2968,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_44",
@@ -2734,7 +2980,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_45",
@@ -2745,7 +2992,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_46",
@@ -2756,7 +3004,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_48",
@@ -2767,7 +3016,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_01",
@@ -2778,7 +3028,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_4_le_02",
@@ -2789,7 +3040,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_4_le_03",
@@ -2800,7 +3052,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_50",
@@ -2811,7 +3064,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_51",
@@ -2822,7 +3076,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "btech_cs3_52",
@@ -2833,7 +3088,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_53",
@@ -2844,7 +3100,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_54",
@@ -2855,7 +3112,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "btech_cs3_55",
@@ -2866,7 +3124,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft3_01",
@@ -2877,7 +3136,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id3_01",
@@ -2888,7 +3148,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_01",
@@ -2899,7 +3160,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_2_02",
@@ -2910,7 +3172,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_03",
@@ -2921,7 +3184,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_2_06",
@@ -2932,7 +3196,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_07",
@@ -2943,7 +3208,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_2_08",
@@ -2954,7 +3220,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_09",
@@ -2965,7 +3232,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_10",
@@ -2976,7 +3244,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_11",
@@ -2987,7 +3256,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_12",
@@ -2998,7 +3268,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_2_14",
@@ -3009,7 +3280,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_15",
@@ -3020,7 +3292,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_17",
@@ -3031,7 +3304,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_18",
@@ -3042,7 +3316,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_19",
@@ -3053,7 +3328,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_2_20",
@@ -3064,7 +3340,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_01",
@@ -3075,7 +3352,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_02",
@@ -3086,7 +3364,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_03",
@@ -3097,7 +3376,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_04",
@@ -3108,7 +3388,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_05",
@@ -3119,7 +3400,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_06",
@@ -3130,7 +3412,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_07",
@@ -3141,7 +3424,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_08",
@@ -3152,7 +3436,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_09",
@@ -3163,7 +3448,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_10",
@@ -3174,7 +3460,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_11",
@@ -3185,7 +3472,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_12",
@@ -3196,7 +3484,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_13",
@@ -3207,7 +3496,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_14",
@@ -3218,7 +3508,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_15",
@@ -3229,7 +3520,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_16",
@@ -3240,7 +3532,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_17",
@@ -3251,7 +3544,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_18",
@@ -3262,7 +3556,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_19",
@@ -3273,7 +3568,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_20",
@@ -3284,7 +3580,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_21",
@@ -3295,7 +3592,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_22",
@@ -3306,7 +3604,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_23",
@@ -3317,7 +3616,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_24",
@@ -3328,7 +3628,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_25",
@@ -3339,7 +3640,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_26",
@@ -3350,7 +3652,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_27",
@@ -3361,7 +3664,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_28",
@@ -3372,7 +3676,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_29",
@@ -3383,7 +3688,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_30",
@@ -3394,7 +3700,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_31",
@@ -3405,7 +3712,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_32",
@@ -3416,7 +3724,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_33",
@@ -3427,7 +3736,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_34",
@@ -3438,7 +3748,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_35",
@@ -3449,7 +3760,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_36",
@@ -3460,7 +3772,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_37",
@@ -3471,7 +3784,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_38",
@@ -3482,7 +3796,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_39",
@@ -3493,7 +3808,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_40",
@@ -3504,7 +3820,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_41",
@@ -3515,7 +3832,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_42",
@@ -3526,7 +3844,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_43",
@@ -3537,7 +3856,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_44",
@@ -3548,7 +3868,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_45",
@@ -3559,7 +3880,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_46",
@@ -3570,7 +3892,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_47",
@@ -3581,7 +3904,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_48",
@@ -3592,7 +3916,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_49",
@@ -3603,7 +3928,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_50",
@@ -3614,7 +3940,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_51",
@@ -3625,7 +3952,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_52",
@@ -3636,7 +3964,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_53",
@@ -3647,7 +3976,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_54",
@@ -3658,7 +3988,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_55",
@@ -3669,7 +4000,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_56",
@@ -3680,7 +4012,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_57",
@@ -3691,7 +4024,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_58",
@@ -3702,7 +4036,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_2_59",
@@ -3713,7 +4048,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_01",
@@ -3724,7 +4060,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_05",
@@ -3735,7 +4072,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_06",
@@ -3746,7 +4084,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mtech_cs2_11",
@@ -3757,7 +4096,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_2_60",
@@ -3768,7 +4108,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_02",
@@ -3779,7 +4120,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_04",
@@ -3790,7 +4132,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_09",
@@ -3801,7 +4144,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_11",
@@ -3812,7 +4156,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "cs_3_le_12",
@@ -3823,7 +4168,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_13",
@@ -3834,7 +4180,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_15",
@@ -3845,7 +4192,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_01",
@@ -3856,7 +4204,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_04",
@@ -3867,7 +4216,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_05",
@@ -3878,7 +4228,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_06",
@@ -3889,7 +4240,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_07",
@@ -3900,7 +4252,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_08",
@@ -3911,7 +4264,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_09",
@@ -3922,7 +4276,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_10",
@@ -3933,7 +4288,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_11",
@@ -3944,7 +4300,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_12",
@@ -3955,7 +4312,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_13",
@@ -3966,7 +4324,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_15",
@@ -3977,7 +4336,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_16",
@@ -3988,7 +4348,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_17",
@@ -3999,7 +4360,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_18",
@@ -4010,7 +4372,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_19",
@@ -4021,7 +4384,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_20",
@@ -4032,7 +4396,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_22",
@@ -4043,7 +4408,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_23",
@@ -4054,7 +4420,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_24",
@@ -4065,7 +4432,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_25",
@@ -4076,7 +4444,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_26",
@@ -4087,7 +4456,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_27",
@@ -4098,7 +4468,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_28",
@@ -4109,7 +4480,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_29",
@@ -4120,7 +4492,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_30",
@@ -4131,7 +4504,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_31",
@@ -4142,7 +4516,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_32",
@@ -4153,7 +4528,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_33",
@@ -4164,7 +4540,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_34",
@@ -4175,7 +4552,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_35",
@@ -4186,7 +4564,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_38",
@@ -4197,7 +4576,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_39",
@@ -4208,7 +4588,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "civil_sf_2_40",
@@ -4219,7 +4600,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_2_41",
@@ -4230,7 +4612,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "cs_3_le_18",
@@ -4241,7 +4624,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "Lateral Entry",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft2_01",
@@ -4252,7 +4636,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft2_02",
@@ -4263,7 +4648,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "dip_ft2_03",
@@ -4274,7 +4660,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft2_04",
@@ -4285,7 +4672,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "dip_ft2_05",
@@ -4296,7 +4684,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_08",
@@ -4307,7 +4696,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_03",
@@ -4318,7 +4708,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_04",
@@ -4329,7 +4720,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_05",
@@ -4340,7 +4732,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_06",
@@ -4351,7 +4744,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_01",
@@ -4362,7 +4756,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id2_03",
@@ -4373,7 +4768,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_04",
@@ -4384,7 +4780,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_05",
@@ -4395,7 +4792,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id2_06",
@@ -4406,7 +4804,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_07",
@@ -4417,7 +4816,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_09",
@@ -4428,7 +4828,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_id2_10",
@@ -4439,7 +4840,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id2_11",
@@ -4450,7 +4852,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft2_07",
@@ -4461,7 +4864,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_08",
@@ -4472,7 +4876,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "bsc_ft2_09",
@@ -4483,7 +4888,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "dip_ft2_06",
@@ -4494,7 +4900,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "dip_ft2_07",
@@ -4505,7 +4912,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Hostel",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Female"
   },
   {
     "id": "mca_1_01",
@@ -4516,7 +4924,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_02",
@@ -4527,7 +4936,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_03",
@@ -4538,7 +4948,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_04",
@@ -4549,7 +4960,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_05",
@@ -4560,7 +4972,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_06",
@@ -4571,7 +4984,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_07",
@@ -4582,7 +4996,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_08",
@@ -4593,7 +5008,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_09",
@@ -4604,7 +5020,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_10",
@@ -4615,7 +5032,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_11",
@@ -4626,7 +5044,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_12",
@@ -4637,7 +5056,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_13",
@@ -4648,7 +5068,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_14",
@@ -4659,7 +5080,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_15",
@@ -4670,7 +5092,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_16",
@@ -4681,7 +5104,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_17",
@@ -4692,7 +5116,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_18",
@@ -4703,7 +5128,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_19",
@@ -4714,7 +5140,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_20",
@@ -4725,7 +5152,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_21",
@@ -4736,7 +5164,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_22",
@@ -4747,7 +5176,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_23",
@@ -4758,7 +5188,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_24",
@@ -4769,7 +5200,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_25",
@@ -4780,7 +5212,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_26",
@@ -4791,7 +5224,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "mca_1_27",
@@ -4802,7 +5236,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_01",
@@ -4813,7 +5248,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_02",
@@ -4824,7 +5260,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_03",
@@ -4835,7 +5272,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_04",
@@ -4846,7 +5284,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_05",
@@ -4857,7 +5296,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_06",
@@ -4868,7 +5308,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_07",
@@ -4879,7 +5320,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_08",
@@ -4890,7 +5332,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_09",
@@ -4901,7 +5344,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_10",
@@ -4912,7 +5356,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_11",
@@ -4923,7 +5368,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_12",
@@ -4934,7 +5380,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_13",
@@ -4945,7 +5392,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_14",
@@ -4956,7 +5404,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_15",
@@ -4967,7 +5416,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_16",
@@ -4978,7 +5428,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_17",
@@ -4989,7 +5440,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_18",
@@ -5000,7 +5452,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_19",
@@ -5011,7 +5464,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_20",
@@ -5022,7 +5476,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_21",
@@ -5033,7 +5488,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_22",
@@ -5044,7 +5500,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_23",
@@ -5055,7 +5512,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_24",
@@ -5066,7 +5524,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_25",
@@ -5077,7 +5536,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_26",
@@ -5088,7 +5548,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_27",
@@ -5099,7 +5560,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_28",
@@ -5110,7 +5572,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "civil_sf_1_29",
@@ -5121,7 +5584,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_01",
@@ -5132,7 +5596,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_02",
@@ -5143,7 +5608,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_03",
@@ -5154,7 +5620,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_04",
@@ -5165,7 +5632,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_05",
@@ -5176,7 +5644,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_06",
@@ -5187,7 +5656,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_07",
@@ -5198,7 +5668,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_08",
@@ -5209,7 +5680,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_09",
@@ -5220,7 +5692,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_10",
@@ -5231,7 +5704,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_ft1_11",
@@ -5242,7 +5716,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_01",
@@ -5253,7 +5728,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_02",
@@ -5264,7 +5740,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_03",
@@ -5275,7 +5752,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_04",
@@ -5286,7 +5764,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_05",
@@ -5297,7 +5776,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_06",
@@ -5308,7 +5788,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_07",
@@ -5319,7 +5800,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_08",
@@ -5330,7 +5812,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_09",
@@ -5341,7 +5824,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_10",
@@ -5352,7 +5836,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "bsc_id1_11",
@@ -5363,7 +5848,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft1_01",
@@ -5374,7 +5860,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft1_02",
@@ -5385,7 +5872,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_ft1_03",
@@ -5396,7 +5884,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_id1_01",
@@ -5407,7 +5896,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_id1_02",
@@ -5418,7 +5908,8 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   },
   {
     "id": "dip_id1_03",
@@ -5429,6 +5920,7 @@ export const SAMPLE_STUDENTS: Student[] = [
     "residence": "Outside",
     "status": "Not yet marked",
     "notes": "",
-    "updatedAt": "2026-10-14T17:15:44.722Z"
+    "updatedAt": "2026-10-14T17:36:50.702Z",
+    "gender": "Male"
   }
 ];

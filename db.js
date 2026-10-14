@@ -50,11 +50,13 @@ class HybridDatabaseManager {
           year VARCHAR(100),
           residence VARCHAR(50) DEFAULT 'Hostel',
           status VARCHAR(50) DEFAULT 'Not yet marked',
+          gender VARCHAR(20) DEFAULT 'Male',
           notes TEXT,
           voted_at TIMESTAMPTZ,
           voted_by VARCHAR(150),
           updated_at TIMESTAMPTZ DEFAULT NOW()
         );
+        ALTER TABLE students ADD COLUMN IF NOT EXISTS gender VARCHAR(20) DEFAULT 'Male';
         CREATE INDEX IF NOT EXISTS idx_students_roll ON students(roll);
         CREATE INDEX IF NOT EXISTS idx_students_status ON students(status);
 
@@ -130,6 +132,7 @@ class HybridDatabaseManager {
         year: r.year || '',
         residence: r.residence || 'Hostel',
         status: r.status || 'Not yet marked',
+        gender: r.gender || 'Male',
         notes: r.notes || '',
         votedAt: r.voted_at ? r.voted_at.toISOString() : undefined,
         votedBy: r.voted_by || undefined,
@@ -148,8 +151,8 @@ class HybridDatabaseManager {
     }
     try {
       await this.pool.query(
-        `INSERT INTO students (id, name, roll, course, year, residence, status, notes, voted_at, voted_by, updated_at)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())
+        `INSERT INTO students (id, name, roll, course, year, residence, status, notes, voted_at, voted_by, gender, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW())
          ON CONFLICT (id) DO UPDATE SET
            name = EXCLUDED.name,
            roll = EXCLUDED.roll,
@@ -160,6 +163,7 @@ class HybridDatabaseManager {
            notes = EXCLUDED.notes,
            voted_at = EXCLUDED.voted_at,
            voted_by = EXCLUDED.voted_by,
+           gender = EXCLUDED.gender,
            updated_at = NOW()`,
         [
           student.id,
@@ -172,6 +176,7 @@ class HybridDatabaseManager {
           student.notes || null,
           student.votedAt || null,
           student.votedBy || null,
+          student.gender || 'Male',
         ]
       );
     } catch (err) {
@@ -221,7 +226,7 @@ class HybridDatabaseManager {
           const chunk = students.slice(i, i + chunkSize);
           const values = [];
           const rowsSql = chunk.map((s, idx) => {
-            const offset = idx * 10;
+            const offset = idx * 11;
             values.push(
               s.id,
               s.name,
@@ -232,13 +237,14 @@ class HybridDatabaseManager {
               s.status || 'Not yet marked',
               s.notes || null,
               s.votedAt || null,
-              s.votedBy || null
+              s.votedBy || null,
+              s.gender || 'Male'
             );
-            return `($${offset + 1}, $${offset + 2}, $${offset + 3}, $${offset + 4}, $${offset + 5}, $${offset + 6}, $${offset + 7}, $${offset + 8}, $${offset + 9}, $${offset + 10}, NOW())`;
+            return `($${offset + 1}, $${offset + 2}, $${offset + 3}, $${offset + 4}, $${offset + 5}, $${offset + 6}, $${offset + 7}, $${offset + 8}, $${offset + 9}, $${offset + 10}, $${offset + 11}, NOW())`;
           }).join(', ');
 
           await client.query(
-            `INSERT INTO students (id, name, roll, course, year, residence, status, notes, voted_at, voted_by, updated_at)
+            `INSERT INTO students (id, name, roll, course, year, residence, status, notes, voted_at, voted_by, gender, updated_at)
              VALUES ${rowsSql}
              ON CONFLICT (id) DO UPDATE SET
                name = EXCLUDED.name,
@@ -250,6 +256,7 @@ class HybridDatabaseManager {
                notes = EXCLUDED.notes,
                voted_at = EXCLUDED.voted_at,
                voted_by = EXCLUDED.voted_by,
+               gender = EXCLUDED.gender,
                updated_at = NOW()`,
             values
           );
