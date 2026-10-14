@@ -28,7 +28,13 @@ class HybridDatabaseManager {
       this.pool = new Pool({
         connectionString: url,
         ssl: url.includes('localhost') ? false : { rejectUnauthorized: false },
-        connectionTimeoutMillis: 5000,
+        connectionTimeoutMillis: 15000,
+      });
+
+      this.pool.on('error', (err) => {
+        console.warn('[Neon/Postgres] Idle client notice:', err.message);
+        this.isConnected = false;
+        this.scheduleRetry();
       });
 
       const client = await this.pool.connect();
@@ -56,6 +62,10 @@ class HybridDatabaseManager {
       client.release();
       this.isConnected = true;
       this.connectionUrl = url;
+      if (this.retryTimer) {
+        clearTimeout(this.retryTimer);
+        this.retryTimer = null;
+      }
       console.log('[Neon/Postgres] Connected successfully & schema verified.');
       
       // Drain any queued mutations
@@ -65,7 +75,18 @@ class HybridDatabaseManager {
     } catch (err) {
       this.isConnected = false;
       console.warn('[Neon/Postgres] Connection warning:', err.message);
+      this.scheduleRetry();
       return { success: false, message: err.message };
+    }
+  }
+
+  scheduleRetry() {
+    if (!this.retryTimer && (this.connectionUrl || process.env.DATABASE_URL)) {
+      this.retryTimer = setTimeout(() => {
+        this.retryTimer = null;
+        console.log('[Neon/Postgres] Auto-reconnecting to database...');
+        this.connect().catch(() => {});
+      }, 8000);
     }
   }
 
