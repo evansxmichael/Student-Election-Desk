@@ -352,6 +352,19 @@ app.post('/api/db/sync', requireAdmin, async (req, res) => {
   res.json({ success: true, message: 'Already in sync' });
 });
 
+// Serve frontend static files if Vite production build exists
+const distPath = path.join(__dirname, 'dist');
+if (fs.existsSync(distPath)) {
+  console.log(`[Static] Serving frontend SPA from ${distPath}`);
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
+
 server.listen(PORT, '0.0.0.0', () => {
   const localIp = getLocalIp();
   console.log('====================================================');
