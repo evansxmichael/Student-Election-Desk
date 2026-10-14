@@ -56,7 +56,7 @@ interface ElectionContextType {
 const ElectionContext = createContext<ElectionContextType | undefined>(undefined);
 
 // Local storage keys
-const STORAGE_KEY = 'campus_election_voters_v15';
+const STORAGE_KEY = 'campus_election_voters_v17';
 const VOLUNTEER_KEY = 'campus_election_volunteer_name';
 const ROLE_KEY = 'campus_election_user_role';
 const AUTH_KEY = 'campus_election_auth_session';
