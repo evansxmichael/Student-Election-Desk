@@ -59,15 +59,20 @@ const ROLE_KEY = 'campus_election_user_role';
 const AUTH_KEY = 'campus_election_auth_session';
 
 // Dynamic server base URL
+// Dynamic server base URL
 export const getApiBase = () => {
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
   }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || 'localhost';
+    // If running in production (e.g. on Vercel), route to live Render cloud backend
+    if (host !== 'localhost' && host !== '127.0.0.1' && !host.startsWith('192.168.') && !host.startsWith('10.') && !host.startsWith('100.')) {
+      return 'https://student-election-desk.onrender.com';
+    }
     return `${window.location.protocol}//${host}:3001`;
   }
-  return 'http://localhost:3001';
+  return 'https://student-election-desk.onrender.com';
 };
 
 export const getWsBase = () => {
@@ -76,10 +81,14 @@ export const getWsBase = () => {
   }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || 'localhost';
+    // If running in production (e.g. on Vercel), route to live Render cloud backend
+    if (host !== 'localhost' && host !== '127.0.0.1' && !host.startsWith('192.168.') && !host.startsWith('10.') && !host.startsWith('100.')) {
+      return 'wss://student-election-desk.onrender.com';
+    }
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     return `${proto}//${host}:3001`;
   }
-  return 'ws://localhost:3001';
+  return 'wss://student-election-desk.onrender.com';
 };
 
 export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
