@@ -60,6 +60,9 @@ const AUTH_KEY = 'campus_election_auth_session';
 
 // Dynamic server base URL
 export const getApiBase = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/+$/, '');
+  }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || 'localhost';
     return `${window.location.protocol}//${host}:3001`;
@@ -68,6 +71,9 @@ export const getApiBase = () => {
 };
 
 export const getWsBase = () => {
+  if (import.meta.env.VITE_WS_URL) {
+    return import.meta.env.VITE_WS_URL.replace(/\/+$/, '');
+  }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || 'localhost';
     const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
