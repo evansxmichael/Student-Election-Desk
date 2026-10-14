@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useElection } from '../context/ElectionContext';
 import { COURSES, YEARS } from '../utils/constants';
-import type { ResidenceType, VoterStatus } from '../types';
+import type { ResidenceType, VoterStatus, GenderType } from '../types';
 import { UserPlus, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 export const AddStudentModal: React.FC = () => {
-  const { addStudent, setActiveTab, userRole } = useElection();
+  const { addStudent, setActiveTab, setSelectedGender, userRole } = useElection();
 
   const [name, setName] = useState('');
   const [roll, setRoll] = useState('');
   const [course, setCourse] = useState(COURSES[0]);
   const [year, setYear] = useState(YEARS[0]);
   const [residence, setResidence] = useState<ResidenceType>('Hostel');
+  const [gender, setGender] = useState<GenderType>('Male');
   const [status, setStatus] = useState<VoterStatus>('Not yet marked');
   const [notes, setNotes] = useState('');
 
@@ -25,11 +26,13 @@ export const AddStudentModal: React.FC = () => {
       course,
       year,
       residence,
+      gender,
       status,
       notes: notes.trim(),
       votedAt: status === 'Voted' ? new Date().toISOString() : undefined,
     });
 
+    setSelectedGender(gender);
     setActiveTab('voters');
   };
 
@@ -76,8 +79,8 @@ export const AddStudentModal: React.FC = () => {
             />
           </div>
 
-          {/* Roll No & Residence Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {/* Roll No, Gender & Residence Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Roll Number / Student ID
@@ -89,6 +92,36 @@ export const AddStudentModal: React.FC = () => {
                 placeholder="e.g. 23BCS041"
                 className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl px-3.5 py-2.5 text-sm font-mono focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 font-bold"
               />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                Gender Selection *
+              </label>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setGender('Male')}
+                  className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all touch-scale ${
+                    gender === 'Male'
+                      ? 'bg-sky-50 border-sky-400 text-sky-900 shadow-2xs ring-1 ring-sky-300'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  Male
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGender('Female')}
+                  className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all touch-scale ${
+                    gender === 'Female'
+                      ? 'bg-pink-50 border-pink-400 text-pink-900 shadow-2xs ring-1 ring-pink-300'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  Female
+                </button>
+              </div>
             </div>
 
             <div>
