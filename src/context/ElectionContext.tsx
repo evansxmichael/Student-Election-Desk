@@ -185,12 +185,17 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       return { success: false, message: 'Please enter both username and password.' };
     }
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const res = await fetch(`${getApiBase()}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: u, password: p }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -218,7 +223,13 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
 
       return { success: true };
-    } catch {
+    } catch (err: any) {
+      if (err && err.name === 'AbortError') {
+        return {
+          success: false,
+          message: 'Server was waking up from idle mode. It is ready now — please tap Sign In again!',
+        };
+      }
       return { success: false, message: 'Unable to reach authentication server. Please check your network connection.' };
     }
   };
