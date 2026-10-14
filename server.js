@@ -523,6 +523,14 @@ if (fs.existsSync(distPath)) {
   });
 }
 
+// Global Express Error Handler for safe request handling
+app.use((err, req, res, next) => {
+  if (err) {
+    return res.status(err.status || 400).json({ success: false, message: err.message || 'Invalid Request' });
+  }
+  next();
+});
+
 server.listen(PORT, '0.0.0.0', () => {
   const localIp = getLocalIp();
   console.log('====================================================');
