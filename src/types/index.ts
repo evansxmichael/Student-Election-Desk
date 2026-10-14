@@ -1,6 +1,7 @@
 export type ResidenceType = 'Hostel' | 'Outside' | 'Unknown';
 export type VoterStatus = 'Voted' | 'Not yet marked' | 'Unable to confirm';
 export type UserRole = 'viewer' | 'editor' | 'admin';
+export type GenderType = 'Male' | 'Female';
 
 export interface AuthUser {
   username: string;
@@ -26,6 +27,7 @@ export interface Student {
   year: string;
   residence: ResidenceType;
   status: VoterStatus;
+  gender?: GenderType;
   notes?: string;
   votedAt?: string;
   votedBy?: string;
@@ -44,6 +46,10 @@ export interface ElectionStats {
   hostelVoted: number;
   outsideTotal: number;
   outsideVoted: number;
+  maleTotal: number;
+  maleVoted: number;
+  femaleTotal: number;
+  femaleVoted: number;
   courseStats: Record<string, { total: number; voted: number }>;
 }
 

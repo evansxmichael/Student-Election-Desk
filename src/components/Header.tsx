@@ -23,6 +23,8 @@ export const Header: React.FC = () => {
     setSelectedResidence,
     selectedStatus,
     setSelectedStatus,
+    selectedGender,
+    setSelectedGender,
     stats,
     isWsConnected,
     soundEnabled,
@@ -292,6 +294,29 @@ export const Header: React.FC = () => {
             }`}
           >
             Outside / Day Scholar ({stats.outsideTotal})
+          </button>
+
+          <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
+
+          <button
+            onClick={() => setSelectedGender(selectedGender === 'Male' ? '' : 'Male')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedGender === 'Male'
+                ? 'bg-sky-100 text-sky-900 border border-sky-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Boys / Male ({stats.maleTotal})
+          </button>
+          <button
+            onClick={() => setSelectedGender(selectedGender === 'Female' ? '' : 'Female')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedGender === 'Female'
+                ? 'bg-pink-100 text-pink-900 border border-pink-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Girls / Female ({stats.femaleTotal})
           </button>
         </div>
       </div>

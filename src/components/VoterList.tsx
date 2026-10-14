@@ -16,6 +16,8 @@ export const VoterList: React.FC = () => {
     setSelectedResidence,
     selectedStatus,
     setSelectedStatus,
+    selectedGender,
+    setSelectedGender,
     setActiveTab,
     loadSampleData,
     lastAction,
@@ -28,9 +30,10 @@ export const VoterList: React.FC = () => {
     setSelectedCourse('');
     setSelectedResidence('');
     setSelectedStatus('');
+    setSelectedGender('');
   };
 
-  const hasActiveFilters = Boolean(searchQuery || selectedCourse || selectedResidence || selectedStatus);
+  const hasActiveFilters = Boolean(searchQuery || selectedCourse || selectedResidence || selectedStatus || selectedGender);
 
   return (
     <div className="pb-24 px-4 max-w-6xl mx-auto pt-4 space-y-4">

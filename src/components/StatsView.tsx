@@ -8,6 +8,8 @@ export const StatsView: React.FC = () => {
 
   const hostelRate = stats.hostelTotal > 0 ? Math.round((stats.hostelVoted / stats.hostelTotal) * 100) : 0;
   const outsideRate = stats.outsideTotal > 0 ? Math.round((stats.outsideVoted / stats.outsideTotal) * 100) : 0;
+  const maleRate = stats.maleTotal > 0 ? Math.round((stats.maleVoted / stats.maleTotal) * 100) : 0;
+  const femaleRate = stats.femaleTotal > 0 ? Math.round((stats.femaleVoted / stats.femaleTotal) * 100) : 0;
 
   return (
     <div className="pb-28 px-4 max-w-6xl mx-auto pt-4 space-y-4">
@@ -124,6 +126,53 @@ export const StatsView: React.FC = () => {
             <div
               className="h-full bg-purple-600 rounded-full transition-all duration-500"
               style={{ width: `${outsideRate}%` }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Gender Demographic Participation */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-2xs">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+          Gender Demographic Participation
+        </h3>
+
+        {/* Male Students Bar */}
+        <div>
+          <div className="flex items-center justify-between text-xs mb-1.5">
+            <span className="text-slate-800 font-bold flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block" />
+              Boys / Male Students
+            </span>
+            <span className="text-slate-700 font-mono text-xs font-semibold">
+              {stats.maleVoted} / {stats.maleTotal}{' '}
+              <span className="text-sky-700 font-bold">({maleRate}%)</span>
+            </span>
+          </div>
+          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+            <div
+              className="h-full bg-sky-500 rounded-full transition-all duration-500"
+              style={{ width: `${maleRate}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Female Students Bar */}
+        <div>
+          <div className="flex items-center justify-between text-xs mb-1.5">
+            <span className="text-slate-800 font-bold flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-pink-500 inline-block" />
+              Girls / Female Students
+            </span>
+            <span className="text-slate-700 font-mono text-xs font-semibold">
+              {stats.femaleVoted} / {stats.femaleTotal}{' '}
+              <span className="text-pink-700 font-bold">({femaleRate}%)</span>
+            </span>
+          </div>
+          <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+            <div
+              className="h-full bg-pink-500 rounded-full transition-all duration-500"
+              style={{ width: `${femaleRate}%` }}
             />
           </div>
         </div>

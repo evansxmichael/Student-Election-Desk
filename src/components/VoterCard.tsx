@@ -3,6 +3,7 @@ import type { Student } from '../types';
 import { useElection } from '../context/ElectionContext';
 import { Check, Undo2, Home, Compass, Clock, Trash2, Pencil } from 'lucide-react';
 import { EditStudentModal } from './EditStudentModal';
+import { getStudentGender } from '../utils/gender';
 
 interface VoterCardProps {
   student: Student;
@@ -55,8 +56,18 @@ export const VoterCard: React.FC<VoterCardProps> = ({ student }) => {
             {student.year && <span className="text-slate-400"> • {student.year}</span>}
           </p>
 
-          {/* Residence & Tags */}
+          {/* Residence, Gender & Tags */}
           <div className="flex items-center gap-2 mt-2 flex-wrap">
+            <span
+              className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-md border ${
+                getStudentGender(student) === 'Female'
+                  ? 'bg-pink-50 text-pink-700 border-pink-200'
+                  : 'bg-sky-50 text-sky-700 border-sky-200'
+              }`}
+            >
+              {getStudentGender(student)}
+            </span>
+
             <span
               className={`inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-md border ${
                 student.residence === 'Hostel'

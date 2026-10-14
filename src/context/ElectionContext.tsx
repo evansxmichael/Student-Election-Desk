@@ -4,6 +4,7 @@ import type { Student, VoterStatus, TabType, ElectionStats, SyncMessage, UserRol
 import { SAMPLE_STUDENTS } from '../utils/constants';
 import { sound } from '../utils/sound';
 import { triggerHaptic } from '../utils/haptics';
+import { getStudentGender } from '../utils/gender';
 
 interface ElectionContextType {
   students: Student[];
@@ -18,6 +19,8 @@ interface ElectionContextType {
   setSelectedResidence: (r: string) => void;
   selectedStatus: string;
   setSelectedStatus: (s: string) => void;
+  selectedGender: string;
+  setSelectedGender: (g: string) => void;
   activeTab: TabType;
   setActiveTab: (tab: TabType) => void;
   toggleVoteStatus: (id: string) => void;
@@ -338,6 +341,7 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedResidence, setSelectedResidence] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
+  const [selectedGender, setSelectedGender] = useState('');
   const [activeTab, setActiveTab] = useState<TabType>('voters');
   const [soundEnabled, setSoundEnabledState] = useState(true);
   const [lastAction, setLastAction] = useState<{ message: string; undoAction?: () => void } | null>(null);
@@ -575,10 +579,11 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const matchesYear = !selectedYear || s.year === selectedYear;
       const matchesResidence = !selectedResidence || s.residence === selectedResidence;
       const matchesStatus = !selectedStatus || s.status === selectedStatus;
+      const matchesGender = !selectedGender || getStudentGender(s) === selectedGender;
 
-      return matchesQuery && matchesCourse && matchesYear && matchesResidence && matchesStatus;
+      return matchesQuery && matchesCourse && matchesYear && matchesResidence && matchesStatus && matchesGender;
     });
-  }, [students, searchQuery, selectedCourse, selectedYear, selectedResidence, selectedStatus]);
+  }, [students, searchQuery, selectedCourse, selectedYear, selectedResidence, selectedStatus, selectedGender]);
 
   // Statistics calculation
   const stats: ElectionStats = useMemo(() => {
@@ -595,6 +600,14 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const outside = students.filter((s) => s.residence === 'Outside');
     const outsideTotal = outside.length;
     const outsideVoted = outside.filter((s) => s.status === 'Voted').length;
+
+    const maleStudents = students.filter((s) => getStudentGender(s) === 'Male');
+    const maleTotal = maleStudents.length;
+    const maleVoted = maleStudents.filter((s) => s.status === 'Voted').length;
+
+    const femaleStudents = students.filter((s) => getStudentGender(s) === 'Female');
+    const femaleTotal = femaleStudents.length;
+    const femaleVoted = femaleStudents.filter((s) => s.status === 'Voted').length;
 
     const courseStats: Record<string, { total: number; voted: number }> = {};
     students.forEach((s) => {
@@ -614,6 +627,10 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       hostelVoted,
       outsideTotal,
       outsideVoted,
+      maleTotal,
+      maleVoted,
+      femaleTotal,
+      femaleVoted,
       courseStats,
     };
   }, [students]);
@@ -633,6 +650,8 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setSelectedResidence,
         selectedStatus,
         setSelectedStatus,
+        selectedGender,
+        setSelectedGender,
         activeTab,
         setActiveTab,
         toggleVoteStatus,
