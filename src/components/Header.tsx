@@ -162,99 +162,84 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Filter Chips + KPI Summary in one clean row */}
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar text-xs">
-            <button
-              onClick={() => setSelectedStatus('')}
-              className={`px-3 py-1 rounded-full font-bold transition-all shrink-0 touch-scale ${
-                !selectedStatus
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              All Students ({stats.total})
-            </button>
-            <button
-              onClick={() => setSelectedStatus(selectedStatus === 'Not yet marked' ? '' : 'Not yet marked')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedStatus === 'Not yet marked'
-                  ? 'bg-amber-100 text-amber-900 border border-amber-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Pending ({stats.pending})
-            </button>
-            <button
-              onClick={() => setSelectedStatus(selectedStatus === 'Voted' ? '' : 'Voted')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedStatus === 'Voted'
-                  ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Marked Voted ({stats.voted})
-            </button>
+        {/* Filter Chips in clean scrollable row */}
+        <div className="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar text-xs">
+          <button
+            onClick={() => setSelectedStatus('')}
+            className={`px-3 py-1 rounded-full font-bold transition-all shrink-0 touch-scale ${
+              !selectedStatus
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            All Students ({stats.total})
+          </button>
+          <button
+            onClick={() => setSelectedStatus(selectedStatus === 'Not yet marked' ? '' : 'Not yet marked')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedStatus === 'Not yet marked'
+                ? 'bg-amber-100 text-amber-900 border border-amber-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Pending ({stats.pending})
+          </button>
+          <button
+            onClick={() => setSelectedStatus(selectedStatus === 'Voted' ? '' : 'Voted')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedStatus === 'Voted'
+                ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Marked Voted ({stats.voted})
+          </button>
 
-            <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
+          <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
 
-            <button
-              onClick={() => setSelectedResidence(selectedResidence === 'Hostel' ? '' : 'Hostel')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedResidence === 'Hostel'
-                  ? 'bg-blue-100 text-blue-900 border border-blue-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Hostel ({stats.hostelTotal})
-            </button>
-            <button
-              onClick={() => setSelectedResidence(selectedResidence === 'Outside' ? '' : 'Outside')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedResidence === 'Outside'
-                  ? 'bg-purple-100 text-purple-900 border border-purple-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Outside / Day Scholar ({stats.outsideTotal})
-            </button>
+          <button
+            onClick={() => setSelectedResidence(selectedResidence === 'Hostel' ? '' : 'Hostel')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedResidence === 'Hostel'
+                ? 'bg-blue-100 text-blue-900 border border-blue-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Hostel ({stats.hostelTotal})
+          </button>
+          <button
+            onClick={() => setSelectedResidence(selectedResidence === 'Outside' ? '' : 'Outside')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedResidence === 'Outside'
+                ? 'bg-purple-100 text-purple-900 border border-purple-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Outside / Day Scholar ({stats.outsideTotal})
+          </button>
 
-            <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
+          <span className="w-px h-4 bg-slate-200 shrink-0 mx-1" />
 
-            <button
-              onClick={() => setSelectedGender(selectedGender === 'Male' ? '' : 'Male')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedGender === 'Male'
-                  ? 'bg-sky-100 text-sky-900 border border-sky-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Boys / Male ({stats.maleTotal})
-            </button>
-            <button
-              onClick={() => setSelectedGender(selectedGender === 'Female' ? '' : 'Female')}
-              className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
-                selectedGender === 'Female'
-                  ? 'bg-pink-100 text-pink-900 border border-pink-300 font-bold'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Girls / Female ({stats.femaleTotal})
-            </button>
-          </div>
-
-          {/* Institutional KPI Summary Badge */}
-          <div className="hidden sm:flex items-center gap-2 shrink-0 self-start sm:self-auto bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-2xs">
-            <div className="text-right">
-              <div className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">
-                VOTER PARTICIPATION
-              </div>
-              <div className="text-sm font-mono font-extrabold text-blue-700">
-                {stats.voted} / {stats.total}{' '}
-                <span className="text-xs font-semibold text-emerald-600">({stats.turnoutRate}%)</span>
-              </div>
-            </div>
-          </div>
+          <button
+            onClick={() => setSelectedGender(selectedGender === 'Male' ? '' : 'Male')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedGender === 'Male'
+                ? 'bg-sky-100 text-sky-900 border border-sky-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Boys / Male ({stats.maleTotal})
+          </button>
+          <button
+            onClick={() => setSelectedGender(selectedGender === 'Female' ? '' : 'Female')}
+            className={`px-3 py-1 rounded-full font-semibold transition-all shrink-0 touch-scale ${
+              selectedGender === 'Female'
+                ? 'bg-pink-100 text-pink-900 border border-pink-300 font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+            }`}
+          >
+            Girls / Female ({stats.femaleTotal})
+          </button>
         </div>
       </div>
     </header>

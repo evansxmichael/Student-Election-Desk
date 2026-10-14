@@ -61,21 +61,21 @@ export const VoterList: React.FC = () => {
 
           {/* Institutional Stat Boxes on Right (NJLI style) */}
           <div className="flex items-center gap-3 shrink-0 self-start lg:self-center">
-            <div className="bg-white border border-blue-200/80 rounded-xl px-4 py-2.5 text-center shadow-2xs min-w-[110px]">
+            <div className="bg-white border border-blue-200/80 rounded-xl px-4 py-2.5 text-center shadow-2xs min-w-[120px]">
               <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                REGISTERED
+                REGISTERED VOTERS
               </div>
               <div className="text-lg font-mono font-extrabold text-blue-700">
-                {stats.total} <span className="text-xs font-normal text-slate-500">Voters</span>
+                {stats.total} <span className="text-xs font-semibold text-slate-500">Total</span>
               </div>
             </div>
 
-            <div className="bg-white border border-blue-200/80 rounded-xl px-4 py-2.5 text-center shadow-2xs min-w-[110px]">
+            <div className="bg-white border border-blue-200/80 rounded-xl px-4 py-2.5 text-center shadow-2xs min-w-[150px]">
               <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                TURNOUT
+                PARTICIPATION TURNOUT
               </div>
               <div className="text-lg font-mono font-extrabold text-emerald-600">
-                {stats.turnoutRate}%
+                {stats.voted} / {stats.total} <span className="text-xs font-bold text-emerald-700">({stats.turnoutRate}%)</span>
               </div>
             </div>
           </div>
