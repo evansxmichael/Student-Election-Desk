@@ -1,0 +1,69 @@
+﻿@import "tailwindcss";
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html, body {
+    background-color: #f8fafc !important;
+    color: #0f172a;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    touch-action: manipulation;
+  }
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Institutional Clean Utilities */
+.bg-subtle-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Touch active scale */
+.touch-scale {
+  transition: transform 0.08s ease, filter 0.15s ease, background-color 0.15s ease;
+}
+.touch-scale:active {
+  transform: scale(0.97);
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    color: #000 !important;
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+  }
+}
