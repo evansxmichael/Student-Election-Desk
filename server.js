@@ -17,6 +17,7 @@ const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3001;
 const DATA_FILE = path.join(__dirname, 'data', 'election_store.json');
+const AUDIT_FILE = path.join(__dirname, 'data', 'audit_logs.json');
 const ENV_FILE = path.join(__dirname, '.env');
 
 // Get local network IP for mobile phones
@@ -59,6 +60,49 @@ function persistStore() {
   } catch (err) {
     console.error('[Store] Failed to write store:', err.message);
   }
+}
+
+// In-memory audit log cache backed by JSON file & Neon
+let auditLogs = [];
+try {
+  if (fs.existsSync(AUDIT_FILE)) {
+    const rawAudit = fs.readFileSync(AUDIT_FILE, 'utf-8');
+    auditLogs = JSON.parse(rawAudit);
+    console.log(`[Audit Log] Loaded ${auditLogs.length} audit entries from local store.`);
+  }
+} catch (e) {
+  auditLogs = [];
+}
+
+function persistAuditLogs() {
+  try {
+    fs.writeFileSync(AUDIT_FILE, JSON.stringify(auditLogs.slice(0, 10000), null, 2), 'utf-8');
+  } catch (err) {
+    console.error('[Store] Failed to write audit logs:', err.message);
+  }
+}
+
+function recordAuditLog({ action, actor_username, actor_name, actor_role, target_id, target_name, target_roll, details }) {
+  if (actor_role === 'viewer') return; // Ignore viewers - only log agent and admin activity
+
+  const entry = {
+    id: `audit_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`,
+    timestamp: new Date().toISOString(),
+    action,
+    actor_username: actor_username || 'agent',
+    actor_name: actor_name || actor_username || 'Polling Agent',
+    actor_role: actor_role || 'editor',
+    target_id: target_id || null,
+    target_name: target_name || null,
+    target_roll: target_roll || null,
+    details: details || `${action} action recorded`,
+  };
+
+  auditLogs.unshift(entry);
+  persistAuditLogs();
+  dbManager.insertAuditLog(entry).catch(() => {});
+  broadcast({ type: 'AUDIT_LOG_ADDED', payload: entry });
+  console.log(`[Audit] [${action}] ${entry.details}`);
 }
 
 // Auth Middleware for Express
@@ -121,6 +165,16 @@ function broadcast(msg, senderWs = null) {
       } else {
         await dbManager.batchSyncUsers(accountStore.accounts);
       }
+
+      // Permanently reconcile audit logs with Neon PostgreSQL
+      const dbAuditLogs = await dbManager.fetchAllAuditLogs();
+      if (dbAuditLogs && dbAuditLogs.length > 0) {
+        auditLogs = dbAuditLogs;
+        persistAuditLogs();
+        console.log(`[Audit] Loaded and synchronized ${auditLogs.length} historical audit entries from Neon database.`);
+      } else if (auditLogs.length > 0) {
+        await dbManager.batchSyncAuditLogs(auditLogs);
+      }
     }
   } else {
     console.log('[Neon/Supabase] Operating in instant Hybrid Local mode.');
@@ -134,6 +188,7 @@ wss.on('connection', (ws) => {
     JSON.stringify({
       type: 'INIT',
       payload: students,
+      auditLogs,
       timestamp: Date.now(),
       senderId: 'server',
       dbStatus: dbManager.getStatus(),
@@ -158,6 +213,10 @@ wss.on('connection', (ws) => {
 
         const { id, status, votedAt } = data.payload;
         const votedBy = authUser.displayName || authUser.username;
+        const prevStudent = students.find((s) => s.id === id);
+        const studentName = prevStudent ? prevStudent.name : 'Candidate';
+        const studentRoll = prevStudent ? prevStudent.roll : '';
+
         students = students.map((s) =>
           s.id === id ? { ...s, status, votedAt, votedBy, updatedAt: new Date().toISOString() } : s
         );
@@ -165,6 +224,21 @@ wss.on('connection', (ws) => {
         broadcast({ ...data, payload: { ...data.payload, votedBy } }, ws);
 
         dbManager.updateVote(id, status, votedAt, votedBy).catch(() => {});
+
+        // Audit Logging for Voting Actions
+        const isMarked = status === 'Voted';
+        recordAuditLog({
+          action: isMarked ? 'VOTE_MARKED' : 'VOTE_UNMARKED',
+          actor_username: authUser.username,
+          actor_name: votedBy,
+          actor_role: authUser.role,
+          target_id: id,
+          target_name: studentName,
+          target_roll: studentRoll,
+          details: isMarked
+            ? `Marked ballot attendance for ${studentName} (${studentRoll || 'ID: ' + id.slice(-6)}) as VOTED`
+            : `Unmarked vote for ${studentName} (${studentRoll || 'ID: ' + id.slice(-6)}) — Attendance status reset to "${status}"`,
+        });
       } else if (data.type === 'ADD_STUDENT') {
         if (!authUser || authUser.role !== 'admin') {
           return ws.send(
@@ -180,6 +254,17 @@ wss.on('connection', (ws) => {
         broadcast(data, ws);
 
         dbManager.upsertStudent(data.payload).catch(() => {});
+
+        recordAuditLog({
+          action: 'SPOT_REGISTER',
+          actor_username: authUser.username,
+          actor_name: authUser.displayName || authUser.username,
+          actor_role: authUser.role,
+          target_id: data.payload.id,
+          target_name: data.payload.name,
+          target_roll: data.payload.roll,
+          details: `Spot-registered candidate ${data.payload.name} (${data.payload.roll || 'No Roll'}) in ${data.payload.course}`,
+        });
       } else if (data.type === 'UPDATE_STUDENT') {
         if (!authUser || authUser.role !== 'admin') {
           return ws.send(
@@ -195,6 +280,17 @@ wss.on('connection', (ws) => {
         broadcast(data, ws);
 
         dbManager.upsertStudent(data.payload).catch(() => {});
+
+        recordAuditLog({
+          action: 'STUDENT_UPDATED',
+          actor_username: authUser.username,
+          actor_name: authUser.displayName || authUser.username,
+          actor_role: authUser.role,
+          target_id: data.payload.id,
+          target_name: data.payload.name,
+          target_roll: data.payload.roll,
+          details: `Modified student record for ${data.payload.name} (${data.payload.roll || 'ID: ' + data.payload.id.slice(-6)})`,
+        });
       } else if (data.type === 'DELETE_STUDENT') {
         if (!authUser || authUser.role !== 'admin') {
           return ws.send(
@@ -205,11 +301,23 @@ wss.on('connection', (ws) => {
           );
         }
 
+        const delStudent = students.find((s) => s.id === data.payload.id);
         students = students.filter((s) => s.id !== data.payload.id);
         persistStore();
         broadcast(data, ws);
 
         dbManager.deleteStudent(data.payload.id).catch(() => {});
+
+        recordAuditLog({
+          action: 'STUDENT_DELETED',
+          actor_username: authUser.username,
+          actor_name: authUser.displayName || authUser.username,
+          actor_role: authUser.role,
+          target_id: data.payload.id,
+          target_name: delStudent ? delStudent.name : 'Voter',
+          target_roll: delStudent ? delStudent.roll : '',
+          details: `Deleted student record for ${delStudent ? delStudent.name : data.payload.id}`,
+        });
       } else if (data.type === 'BATCH_IMPORT') {
         if (!authUser || authUser.role !== 'admin') {
           return ws.send(
@@ -254,11 +362,43 @@ app.post('/api/auth/login', (req, res) => {
   if (!result.success) {
     return res.status(401).json(result);
   }
+
+  // Record audit log if agent or admin logs in
+  if (result.user.role === 'editor' || result.user.role === 'admin') {
+    recordAuditLog({
+      action: 'AGENT_LOGIN',
+      actor_username: result.user.username,
+      actor_name: result.user.displayName,
+      actor_role: result.user.role,
+      details: `${result.user.displayName} (@${result.user.username}) authenticated and signed into Polling Desk session`,
+    });
+  }
+
   res.json(result);
+});
+
+app.post('/api/auth/logout', requireAuth, (req, res) => {
+  if (req.user && (req.user.role === 'editor' || req.user.role === 'admin')) {
+    recordAuditLog({
+      action: 'AGENT_LOGOUT',
+      actor_username: req.user.username,
+      actor_name: req.user.displayName,
+      actor_role: req.user.role,
+      details: `${req.user.displayName} (@${req.user.username}) logged out from Polling Desk session`,
+    });
+  }
+  res.json({ success: true });
 });
 
 app.get('/api/auth/me', requireAuth, (req, res) => {
   res.json({ success: true, user: req.user });
+});
+
+// ========================
+// Audit Log API Endpoints
+// ========================
+app.get('/api/audit-logs', requireAuth, (req, res) => {
+  res.json(auditLogs);
 });
 
 // ========================

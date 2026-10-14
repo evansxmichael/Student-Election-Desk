@@ -1,0 +1,74 @@
+[
+  {
+    "id": "audit_1792017065580_9oxmk9",
+    "timestamp": "2026-10-14T22:31:05.580Z",
+    "action": "AGENT_LOGOUT",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "target_id": null,
+    "target_name": null,
+    "target_roll": null,
+    "details": "Polling Agent / Officer (@agent) logged out from Polling Desk session"
+  },
+  {
+    "id": "audit_1792017065067_wydqu2",
+    "timestamp": "2026-10-14T22:31:05.067Z",
+    "action": "VOTE_UNMARKED",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "target_id": "sample_student_1",
+    "target_name": "Candidate",
+    "target_roll": null,
+    "details": "Unmarked vote for Candidate (ID: dent_1) — Attendance status reset to \"Pending\""
+  },
+  {
+    "id": "audit_1792017064561_87674u",
+    "timestamp": "2026-10-14T22:31:04.561Z",
+    "action": "VOTE_MARKED",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "target_id": "sample_student_1",
+    "target_name": "Candidate",
+    "target_roll": null,
+    "details": "Marked ballot attendance for Candidate (ID: dent_1) as VOTED"
+  },
+  {
+    "id": "audit_1792017064512_itn73x",
+    "timestamp": "2026-10-14T22:31:04.512Z",
+    "action": "AGENT_LOGIN",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "target_id": null,
+    "target_name": null,
+    "target_roll": null,
+    "details": "Polling Agent / Officer (@agent) authenticated and signed into Polling Desk session"
+  },
+  {
+    "id": "audit_1792017037555_vt7zio",
+    "timestamp": "2026-10-14T22:30:37.555Z",
+    "action": "AGENT_LOGIN",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "target_id": null,
+    "target_name": null,
+    "target_roll": null,
+    "details": "Polling Agent / Officer (@agent) authenticated and signed into Polling Desk session"
+  },
+  {
+    "id": "audit_1792017037533_isfojz",
+    "timestamp": "2026-10-14T22:30:37.533Z",
+    "action": "AGENT_LOGIN",
+    "actor_username": "admin",
+    "actor_name": "Chief Election Officer",
+    "actor_role": "admin",
+    "target_id": null,
+    "target_name": null,
+    "target_roll": null,
+    "details": "Chief Election Officer (@admin) authenticated and signed into Polling Desk session"
+  }
+]

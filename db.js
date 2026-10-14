@@ -71,6 +71,23 @@ class HybridDatabaseManager {
           updated_at TIMESTAMPTZ DEFAULT NOW()
         );
         CREATE INDEX IF NOT EXISTS idx_users_username ON app_users(username);
+
+        CREATE TABLE IF NOT EXISTS audit_logs (
+          id VARCHAR(100) PRIMARY KEY,
+          timestamp TIMESTAMPTZ DEFAULT NOW(),
+          action VARCHAR(50) NOT NULL,
+          actor_username VARCHAR(100) NOT NULL,
+          actor_name VARCHAR(255),
+          actor_role VARCHAR(50),
+          target_id VARCHAR(100),
+          target_name VARCHAR(255),
+          target_roll VARCHAR(100),
+          details TEXT,
+          created_at TIMESTAMPTZ DEFAULT NOW()
+        );
+        CREATE INDEX IF NOT EXISTS idx_audit_timestamp ON audit_logs(timestamp DESC);
+        CREATE INDEX IF NOT EXISTS idx_audit_action ON audit_logs(action);
+        CREATE INDEX IF NOT EXISTS idx_audit_actor ON audit_logs(actor_username);
       `);
 
       client.release();
@@ -369,6 +386,93 @@ class HybridDatabaseManager {
       await this.pool.query('DELETE FROM app_users WHERE LOWER(username) = LOWER($1)', [username]);
     } catch (err) {
       console.warn('[Neon/Postgres] Delete user warning:', err.message);
+    }
+  }
+
+  async insertAuditLog(log) {
+    if (!this.isConnected || !this.pool) return;
+    try {
+      await this.pool.query(
+        `INSERT INTO audit_logs (id, timestamp, action, actor_username, actor_name, actor_role, target_id, target_name, target_roll, details, created_at)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())
+         ON CONFLICT (id) DO NOTHING`,
+        [
+          log.id,
+          log.timestamp || new Date().toISOString(),
+          log.action,
+          log.actor_username,
+          log.actor_name || null,
+          log.actor_role || null,
+          log.target_id || null,
+          log.target_name || null,
+          log.target_roll || null,
+          log.details || null,
+        ]
+      );
+    } catch (e) {
+      console.warn('[Neon/Postgres] insertAuditLog warning:', e.message);
+    }
+  }
+
+  async fetchAllAuditLogs(limit = 10000) {
+    if (!this.isConnected || !this.pool) return null;
+    try {
+      const res = await this.pool.query(
+        'SELECT * FROM audit_logs ORDER BY timestamp DESC LIMIT $1',
+        [limit]
+      );
+      return res.rows.map((r) => ({
+        id: r.id,
+        timestamp: r.timestamp ? r.timestamp.toISOString() : new Date().toISOString(),
+        action: r.action,
+        actor_username: r.actor_username,
+        actor_name: r.actor_name || r.actor_username,
+        actor_role: r.actor_role || 'editor',
+        target_id: r.target_id || undefined,
+        target_name: r.target_name || undefined,
+        target_roll: r.target_roll || undefined,
+        details: r.details || '',
+      }));
+    } catch (e) {
+      console.warn('[Neon/Postgres] fetchAllAuditLogs notice:', e.message);
+      return null;
+    }
+  }
+
+  async batchSyncAuditLogs(logs) {
+    if (!this.isConnected || !this.pool || !logs || !logs.length) return;
+    try {
+      const client = await this.pool.connect();
+      try {
+        await client.query('BEGIN');
+        for (const log of logs) {
+          await client.query(
+            `INSERT INTO audit_logs (id, timestamp, action, actor_username, actor_name, actor_role, target_id, target_name, target_roll, details, created_at)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())
+             ON CONFLICT (id) DO NOTHING`,
+            [
+              log.id,
+              log.timestamp || new Date().toISOString(),
+              log.action,
+              log.actor_username,
+              log.actor_name || null,
+              log.actor_role || null,
+              log.target_id || null,
+              log.target_name || null,
+              log.target_roll || null,
+              log.details || null,
+            ]
+          );
+        }
+        await client.query('COMMIT');
+      } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+      } finally {
+        client.release();
+      }
+    } catch (err) {
+      console.error('[Neon/Postgres] Batch sync audit logs error:', err.message);
     }
   }
 }

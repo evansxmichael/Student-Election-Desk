@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Female Voters Roll - Course & Year Wise</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm 14mm 10mm;
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #0f172a;
+      line-height: 1.35;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    /* Cover / Main Header */
+    .header {
+      border: 2px solid #0f172a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-left h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-left .sub {
+      font-size: 12px;
+      font-weight: 600;
+      color: #be185d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-left .desc {
+      font-size: 10px;
+      color: #475569;
+      margin-top: 4px;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .stat-pill {
+      background: #be185d;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .stat-pill .num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-pill .lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    /* Summary Card */
+    .summary-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .summary-title {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .summary-table th {
+      background: #f1f5f9;
+      padding: 6px 10px;
+      text-align: left;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .summary-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .summary-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .summary-table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    /* Group Sections */
+    .group-section {
+      margin-bottom: 18px;
+      page-break-inside: auto;
+    }
+
+    .page-break-before {
+      page-break-before: always;
+    }
+
+    .group-header {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 8px 12px;
+      border-radius: 6px 6px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .group-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .group-badge {
+      background: #be185d;
+      color: #ffffff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 11px;
+    }
+
+    .group-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .group-subtitle {
+      font-size: 9.5px;
+      color: #cbd5e1;
+    }
+
+    .group-meta {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #f472b6;
+      background: rgba(244, 114, 182, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(244, 114, 182, 0.3);
+    }
+
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #cbd5e1;
+      border-top: none;
+      font-size: 10.5px;
+    }
+
+    .data-table thead th {
+      background: #f8fafc;
+      color: #334155;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      border-bottom: 2px solid #cbd5e1;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .data-table thead th:last-child {
+      border-right: none;
+    }
+
+    .data-table tbody tr {
+      page-break-inside: avoid;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+      background: #fdfdfe;
+    }
+
+    .data-table tbody td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+
+    .data-table tbody td:last-child {
+      border-right: none;
+    }
+
+    .col-num {
+      text-align: center;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .col-roll code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 10px;
+      background: #f1f5f9;
+      padding: 2px 4px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .col-name {
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.1px;
+    }
+
+    .col-res {
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-hostel {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .badge-outside {
+      background: #f3e8ff;
+      color: #7e22ce;
+      border: 1px solid #e9d5ff;
+    }
+
+    .col-status {
+      text-align: center;
+    }
+
+    .status-voted {
+      font-size: 8.5px;
+      font-weight: 800;
+      color: #15803d;
+      background: #dcfce7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #bbf7d0;
+    }
+
+    .status-pending {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #92400e;
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #fde68a;
+    }
+
+    .sign-box {
+      border-bottom: 1px dashed #94a3b8;
+      height: 20px;
+      margin: 2px 6px;
+    }
+
+    /* Footer Signatures */
+    .officer-signatures {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      page-break-inside: avoid;
+      padding: 10px 20px;
+    }
+
+    .officer-box {
+      text-align: center;
+      width: 220px;
+    }
+
+    .officer-line {
+      border-top: 1.5px solid #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .officer-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+
+    .officer-desc {
+      font-size: 8.5px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Official Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Student Council Election 2026</h1>
+      <div class="sub">Official Female Polling Roll & Turnout Register</div>
+      <div class="desc">Department, Course & Academic Year-wise Verified Voter Roll &bull; Maulana Azad National Urdu University</div>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <div class="num">126</div>
+        <div class="lbl">Female Voters</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="summary-card">
+    <div class="summary-title">Department & Academic Year Executive Summary</div>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th style="width: 40px; text-align: center;">#</th>
+          <th>Academic Course / Department</th>
+          <th style="width: 140px;">Academic Stage / Year</th>
+          <th style="width: 110px; text-align: center;">Eligible Voters</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">1</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">16</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">2</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">21</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">3</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">3rd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">26</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">4</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">4th Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">17</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">5</td>
+    <td style="font-weight: 700; color: #0f172a;">M.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">8</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">6</td>
+    <td style="font-weight: 700; color: #0f172a;">M.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">5</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">7</td>
+    <td style="font-weight: 700; color: #0f172a;">MCA</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">5</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">8</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech Civil (SF)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">7</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">9</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">9</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">10</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">3rd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">1</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">11</td>
+    <td style="font-weight: 700; color: #0f172a;">Diploma Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">5</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">12</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #2563eb;">6</td>
+  </tr>
+
+        <tr style="background: #f1f5f9; font-weight: 800;">
+          <td colspan="3" style="text-align: right; text-transform: uppercase; font-size: 10px;">Total Verified Female Voters:</td>
+          <td style="text-align: center; font-size: 12px; color: #be185d;">126</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Detailed Course & Year Sections -->
+  
+    <div class="group-section ">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">1</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>16</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">1</td>
+        <td class="col-roll"><code>26BTCS001HY</code></td>
+        <td class="col-name">TABEA HASNAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">2</td>
+        <td class="col-roll"><code>26BTCS004HY</code></td>
+        <td class="col-name">MAHE NOOR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">3</td>
+        <td class="col-roll"><code>26BTCS006HY</code></td>
+        <td class="col-name">ALISHA NAUSIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">4</td>
+        <td class="col-roll"><code>26BTCS010HY</code></td>
+        <td class="col-name">ADEEBA AFREEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">5</td>
+        <td class="col-roll"><code>26BTCS013HY</code></td>
+        <td class="col-name">NAHID FIRDOUSH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">6</td>
+        <td class="col-roll"><code>26BTCS014HY</code></td>
+        <td class="col-name">FARAH AFRIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">7</td>
+        <td class="col-roll"><code>26BTCS017HY</code></td>
+        <td class="col-name">NAHID AKHTER</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">8</td>
+        <td class="col-roll"><code>26BTCS026HY</code></td>
+        <td class="col-name">SHAYNA KULSUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">9</td>
+        <td class="col-roll"><code>26BTCS033HY</code></td>
+        <td class="col-name">RUFAT PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">10</td>
+        <td class="col-roll"><code>26BTCS039HY</code></td>
+        <td class="col-name">RAHNUMA PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">11</td>
+        <td class="col-roll"><code>26BTCS041HY</code></td>
+        <td class="col-name">SANIYA AAZMI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">12</td>
+        <td class="col-roll"><code>26BTCS042HY</code></td>
+        <td class="col-name">SHAIKH NATIQA TABASSUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">13</td>
+        <td class="col-roll"><code>26BTCS045HY</code></td>
+        <td class="col-name">RUHI TABASSUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">14</td>
+        <td class="col-roll"><code>26BTCS051HY</code></td>
+        <td class="col-name">AAFIA ZEBA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">15</td>
+        <td class="col-roll"><code>26BTCS056HY</code></td>
+        <td class="col-name">HOMA FATIMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">16</td>
+        <td class="col-roll"><code>26BTCS060HY</code></td>
+        <td class="col-name">ZOHA SALAHUDDIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">2</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>21</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">17</td>
+        <td class="col-roll"><code>A250024</code></td>
+        <td class="col-name">NAZIA ALI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">18</td>
+        <td class="col-roll"><code>A250025</code></td>
+        <td class="col-name">FALAK FARIDI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">19</td>
+        <td class="col-roll"><code>A250026</code></td>
+        <td class="col-name">SABA TAHSEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">20</td>
+        <td class="col-roll"><code>A250027</code></td>
+        <td class="col-name">ARBIYA KHANAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">21</td>
+        <td class="col-roll"><code>A250028</code></td>
+        <td class="col-name">TABASSUM PARVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">22</td>
+        <td class="col-roll"><code>A250029</code></td>
+        <td class="col-name">KHUSHNABI KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">23</td>
+        <td class="col-roll"><code>A250030</code></td>
+        <td class="col-name">RUQAIYA AKRAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">24</td>
+        <td class="col-roll"><code>A250032</code></td>
+        <td class="col-name">SAYNA PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">25</td>
+        <td class="col-roll"><code>A250033</code></td>
+        <td class="col-name">AIMAN SHAHID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">26</td>
+        <td class="col-roll"><code>A250034</code></td>
+        <td class="col-name">SYEDA KASHIFA NOOREEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">27</td>
+        <td class="col-roll"><code>A250039</code></td>
+        <td class="col-name">LAIBA ASHRAF</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">28</td>
+        <td class="col-roll"><code>A250041</code></td>
+        <td class="col-name">ANAM BANO</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">29</td>
+        <td class="col-roll"><code>A250043</code></td>
+        <td class="col-name">HABIBA AKRAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">30</td>
+        <td class="col-roll"><code>A250051</code></td>
+        <td class="col-name">SABIHA QURESHI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">31</td>
+        <td class="col-roll"><code>A250052</code></td>
+        <td class="col-name">LUBNA GAZAL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">32</td>
+        <td class="col-roll"><code>A250059</code></td>
+        <td class="col-name">SARAH NAWAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">33</td>
+        <td class="col-roll"><code>A250064</code></td>
+        <td class="col-name">LADLI KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">34</td>
+        <td class="col-roll"><code>A250070</code></td>
+        <td class="col-name">HAJRAH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">35</td>
+        <td class="col-roll"><code>A250073</code></td>
+        <td class="col-name">NAHIDA PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">36</td>
+        <td class="col-roll"><code>A250074</code></td>
+        <td class="col-name">LAYBA HAYAT</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">37</td>
+        <td class="col-roll"><code>A250082</code></td>
+        <td class="col-name">FATIMA ZAHRA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">3</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">3rd Year &bull; Total Candidates: <strong>26</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">38</td>
+        <td class="col-roll"><code>A200691</code></td>
+        <td class="col-name">KULSUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">39</td>
+        <td class="col-roll"><code>A200710</code></td>
+        <td class="col-name">ZAINAB SHAKIL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">40</td>
+        <td class="col-roll"><code>A200756</code></td>
+        <td class="col-name">Suraiya Umar</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">41</td>
+        <td class="col-roll"><code>A210450</code></td>
+        <td class="col-name">BUSHRA ERAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">42</td>
+        <td class="col-roll"><code>A210459</code></td>
+        <td class="col-name">RUKSHAR PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">43</td>
+        <td class="col-roll"><code>A210771</code></td>
+        <td class="col-name">SIMMI PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">44</td>
+        <td class="col-roll"><code>A210775</code></td>
+        <td class="col-name">SANIA NAAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">45</td>
+        <td class="col-roll"><code>A221028</code></td>
+        <td class="col-name">NAHID KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">46</td>
+        <td class="col-roll"><code>A221055</code></td>
+        <td class="col-name">SHABNAM PRAVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">47</td>
+        <td class="col-roll"><code>A240005</code></td>
+        <td class="col-name">FATIMA ANJUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">48</td>
+        <td class="col-roll"><code>A240006</code></td>
+        <td class="col-name">SANA ANJUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">49</td>
+        <td class="col-roll"><code>A240008</code></td>
+        <td class="col-name">MARIYAM FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">50</td>
+        <td class="col-roll"><code>A240009</code></td>
+        <td class="col-name">ISMAT JAHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">51</td>
+        <td class="col-roll"><code>A240012</code></td>
+        <td class="col-name">RAHAT PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">52</td>
+        <td class="col-roll"><code>A240017</code></td>
+        <td class="col-name">ATIYA JAMIL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">53</td>
+        <td class="col-roll"><code>A240023</code></td>
+        <td class="col-name">ADEEBA FATIMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">54</td>
+        <td class="col-roll"><code>A240027</code></td>
+        <td class="col-name">FARIYA ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">55</td>
+        <td class="col-roll"><code>A240029</code></td>
+        <td class="col-name">SIFAT NAAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">56</td>
+        <td class="col-roll"><code>A240031</code></td>
+        <td class="col-name">SABA PARVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">57</td>
+        <td class="col-roll"><code>A240046</code></td>
+        <td class="col-name">SABA KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">58</td>
+        <td class="col-roll"><code>A240051</code></td>
+        <td class="col-name">SHAIK KHALIDA BEGUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">59</td>
+        <td class="col-roll"><code>A240208</code></td>
+        <td class="col-name">SABRIN PERWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">60</td>
+        <td class="col-roll"><code>A240209</code></td>
+        <td class="col-name">SADIYA FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">61</td>
+        <td class="col-roll"><code>A242205</code></td>
+        <td class="col-name">NARGIS KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">62</td>
+        <td class="col-roll"><code>A251900</code></td>
+        <td class="col-name">JUMANA HUSNA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">63</td>
+        <td class="col-roll"><code>A251905</code></td>
+        <td class="col-name">BUSHRA JABIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">4</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">4th Year &bull; Total Candidates: <strong>17</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">64</td>
+        <td class="col-roll"><code>A200518</code></td>
+        <td class="col-name">SADAF IMTEYAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">65</td>
+        <td class="col-roll"><code>A200580</code></td>
+        <td class="col-name">PAMMI KHATUN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">66</td>
+        <td class="col-roll"><code>A210437</code></td>
+        <td class="col-name">Benzar Anjum</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">67</td>
+        <td class="col-roll"><code>A210463</code></td>
+        <td class="col-name">Riza Nooreen Sultana</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">68</td>
+        <td class="col-roll"><code>A230092</code></td>
+        <td class="col-name">AFREEN ALIM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">69</td>
+        <td class="col-roll"><code>A230100</code></td>
+        <td class="col-name">TARANNUM PARVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">70</td>
+        <td class="col-roll"><code>A230107</code></td>
+        <td class="col-name">SANA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">71</td>
+        <td class="col-roll"><code>A230109</code></td>
+        <td class="col-name">KAYNAT MAQSOOD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">72</td>
+        <td class="col-roll"><code>A230110</code></td>
+        <td class="col-name">SANIYA SHAIKH FIRDAUS</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">73</td>
+        <td class="col-roll"><code>A230112</code></td>
+        <td class="col-name">SHAGUFTA PARWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">74</td>
+        <td class="col-roll"><code>A230121</code></td>
+        <td class="col-name">APSANA PRAWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">75</td>
+        <td class="col-roll"><code>A230127</code></td>
+        <td class="col-name">HABIBA MIRZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">76</td>
+        <td class="col-roll"><code>A230128</code></td>
+        <td class="col-name">TUBA FATIMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">77</td>
+        <td class="col-roll"><code>A230132</code></td>
+        <td class="col-name">SANA FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">78</td>
+        <td class="col-roll"><code>A230134</code></td>
+        <td class="col-name">SABIHA KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">79</td>
+        <td class="col-roll"><code>A230136</code></td>
+        <td class="col-name">ALFIYA MEHROOSH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">80</td>
+        <td class="col-roll"><code>A240205</code></td>
+        <td class="col-name">NUSRAT FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">5</span>
+          <div>
+            <h2 class="group-title">M.Tech (Computer Science)</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>8</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">81</td>
+        <td class="col-roll"><code>26MTCS001HY</code></td>
+        <td class="col-name">JAWARIYA MALIK</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">82</td>
+        <td class="col-roll"><code>26MTCS006HY</code></td>
+        <td class="col-name">SHAINA MEO</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">83</td>
+        <td class="col-roll"><code>26MTCS008HY</code></td>
+        <td class="col-name">RABIYA KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">84</td>
+        <td class="col-roll"><code>26MTCS015HY</code></td>
+        <td class="col-name">HEENAKOUSAR ABDUL RAZAK JAMBAGI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">85</td>
+        <td class="col-roll"><code>26MTCS020HY</code></td>
+        <td class="col-name">ALIYA NEDA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">86</td>
+        <td class="col-roll"><code>26MTCS023HY</code></td>
+        <td class="col-name">ILIYA SABAT</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">87</td>
+        <td class="col-roll"><code>26MTCS026HY</code></td>
+        <td class="col-name">FATMA SIDDIQUE</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">88</td>
+        <td class="col-roll"><code>26MTCS027HY</code></td>
+        <td class="col-name">SHAIK HAFIZUNNISA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">6</span>
+          <div>
+            <h2 class="group-title">M.Tech (Computer Science)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>5</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">89</td>
+        <td class="col-roll"><code>A180335</code></td>
+        <td class="col-name">SUFIYA PRAWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">90</td>
+        <td class="col-roll"><code>A221905</code></td>
+        <td class="col-name">SHAISTA PERWEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">91</td>
+        <td class="col-roll"><code>A231306</code></td>
+        <td class="col-name">DARAKHSHAN KAUSAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">92</td>
+        <td class="col-roll"><code>A231312</code></td>
+        <td class="col-name">UMME KULSOOM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">93</td>
+        <td class="col-roll"><code>A250096</code></td>
+        <td class="col-name">SAIRA BAGUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">7</span>
+          <div>
+            <h2 class="group-title">MCA</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>5</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">94</td>
+        <td class="col-roll"><code>A180355</code></td>
+        <td class="col-name">Najmussajar naj</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">95</td>
+        <td class="col-roll"><code>A250004</code></td>
+        <td class="col-name">KHUSHI ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">96</td>
+        <td class="col-roll"><code>A250006</code></td>
+        <td class="col-name">ALISHA SADIQ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">97</td>
+        <td class="col-roll"><code>A250008</code></td>
+        <td class="col-name">AFIFA ASLAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">98</td>
+        <td class="col-roll"><code>A250013</code></td>
+        <td class="col-name">SWALEHA KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">8</span>
+          <div>
+            <h2 class="group-title">B.Tech Civil (SF)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>7</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">99</td>
+        <td class="col-roll"><code>A220908</code></td>
+        <td class="col-name">NAZMEEN PARVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">100</td>
+        <td class="col-roll"><code>A252179</code></td>
+        <td class="col-name">MUSHARRAT FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">101</td>
+        <td class="col-roll"><code>A252182</code></td>
+        <td class="col-name">MOALLIM NAJMUS SAHAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">102</td>
+        <td class="col-roll"><code>A252185</code></td>
+        <td class="col-name">GULFISHA KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">103</td>
+        <td class="col-roll"><code>A252206</code></td>
+        <td class="col-name">BUSHRA GAUHAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">104</td>
+        <td class="col-roll"><code>A252210</code></td>
+        <td class="col-name">ROQUIYA AYAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">105</td>
+        <td class="col-roll"><code>A252260</code></td>
+        <td class="col-name">SADIYA KHATUN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">9</span>
+          <div>
+            <h2 class="group-title">B.Sc Fashion Technology</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>9</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">106</td>
+        <td class="col-roll"><code>A210574</code></td>
+        <td class="col-name">FATMAH KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">107</td>
+        <td class="col-roll"><code>A221233</code></td>
+        <td class="col-name">SAIMA KHATOON</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">108</td>
+        <td class="col-roll"><code>A252321</code></td>
+        <td class="col-name">TEHSIN FATMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">109</td>
+        <td class="col-roll"><code>A252322</code></td>
+        <td class="col-name">FATIMA BANOO</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">110</td>
+        <td class="col-roll"><code>A252323</code></td>
+        <td class="col-name">NOOREEN FATIMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">111</td>
+        <td class="col-roll"><code>A252324</code></td>
+        <td class="col-name">PRISKILLA BATHULA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">112</td>
+        <td class="col-roll"><code>A252506</code></td>
+        <td class="col-name">NUKALA SWETHA KUMARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">113</td>
+        <td class="col-roll"><code>A252507</code></td>
+        <td class="col-name">DONKINALA GAYATRI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">114</td>
+        <td class="col-roll"><code>A252508</code></td>
+        <td class="col-name">VELAMALA POONAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">10</span>
+          <div>
+            <h2 class="group-title">B.Sc Fashion Technology</h2>
+            <div class="group-subtitle">3rd Year &bull; Total Candidates: <strong>1</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">115</td>
+        <td class="col-roll"><code>A242519</code></td>
+        <td class="col-name">BOYA PAVANI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">11</span>
+          <div>
+            <h2 class="group-title">Diploma Fashion Technology</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>5</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">116</td>
+        <td class="col-roll"><code>A252314</code></td>
+        <td class="col-name">SOFIYA BEGUM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">117</td>
+        <td class="col-roll"><code>A252316</code></td>
+        <td class="col-name">SANA AFREEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">118</td>
+        <td class="col-roll"><code>A252317</code></td>
+        <td class="col-name">RAVI DURGA BHAVANI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">119</td>
+        <td class="col-roll"><code>A252509</code></td>
+        <td class="col-name">MANDAPU AMMA AKHILANDESWARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">120</td>
+        <td class="col-roll"><code>A252510</code></td>
+        <td class="col-name">CHITHIRALA V N L S HIMASRI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">12</span>
+          <div>
+            <h2 class="group-title">B.Sc Interior Design</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>6</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Female Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">121</td>
+        <td class="col-roll"><code>A252320</code></td>
+        <td class="col-name">SAJIA PARVEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">122</td>
+        <td class="col-roll"><code>A252329</code></td>
+        <td class="col-name">FARHA NAAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">123</td>
+        <td class="col-roll"><code>A252330</code></td>
+        <td class="col-name">SADAF KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">124</td>
+        <td class="col-roll"><code>A252332</code></td>
+        <td class="col-name">ADIBA KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">125</td>
+        <td class="col-roll"><code>A252333</code></td>
+        <td class="col-name">UNSA TAHREEM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">126</td>
+        <td class="col-roll"><code>A252503</code></td>
+        <td class="col-name">GANNAMANENI LAKSHMI LAVANYA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+
+  <!-- Final Signature Section -->
+  <div class="officer-signatures">
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Presiding Officer (Girls Booth)</div>
+      <div class="officer-desc">Signature & Date Stamp</div>
+    </div>
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Polling Agent / Observer</div>
+      <div class="officer-desc">Student Council Election Desk</div>
+    </div>
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Chief Election Officer</div>
+      <div class="officer-desc">Official Certification Seal</div>
+    </div>
+  </div>
+
+</body>
+</html>

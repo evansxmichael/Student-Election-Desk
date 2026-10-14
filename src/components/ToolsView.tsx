@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useElection, getApiBase } from '../context/ElectionContext';
 import { exportStudentsToCsv, downloadCsvTemplate, parseCsvFile } from '../utils/csv';
 import { QRCodeSVG } from 'qrcode.react';
@@ -28,6 +28,11 @@ import {
   UserPlus,
   Users,
   AlertCircle,
+  History,
+  LogIn,
+  CheckCircle2,
+  RotateCcw,
+  Search,
 } from 'lucide-react';
 
 export const ToolsView: React.FC = () => {
@@ -46,6 +51,8 @@ export const ToolsView: React.FC = () => {
     addUser,
     updateUserPassword,
     deleteUser,
+    auditLogs,
+    refreshAuditLogs,
   } = useElection();
 
   const [mobileUrl, setMobileUrl] = useState('');
@@ -72,6 +79,165 @@ export const ToolsView: React.FC = () => {
   // Password Edit State
   const [editingPasswordFor, setEditingPasswordFor] = useState<string | null>(null);
   const [editPasswordInput, setEditPasswordInput] = useState('');
+
+  // Audit Trail State
+  const [auditSearchQuery, setAuditSearchQuery] = useState('');
+  const [auditFilterAction, setAuditFilterAction] = useState<string>('ALL');
+  const [auditPageSize, setAuditPageSize] = useState<number | 'ALL'>('ALL');
+  const [isRefreshingAudit, setIsRefreshingAudit] = useState(false);
+
+  const handleRefreshAudit = async () => {
+    setIsRefreshingAudit(true);
+    try {
+      await refreshAuditLogs();
+    } finally {
+      setTimeout(() => setIsRefreshingAudit(false), 500);
+    }
+  };
+
+  const handleExportAuditLogsCsv = () => {
+    if (!auditLogs || auditLogs.length === 0) return;
+    const headers = ['Timestamp', 'Action', 'Actor Name', 'Username', 'Role', 'Target Student', 'Target Roll', 'Details'];
+    const rows = auditLogs.map((log) => [
+      `"${new Date(log.timestamp).toLocaleString('en-IN')}"`,
+      `"${log.action}"`,
+      `"${(log.actor_name || '').replace(/"/g, '""')}"`,
+      `"${(log.actor_username || '').replace(/"/g, '""')}"`,
+      `"${log.actor_role}"`,
+      `"${(log.target_name || '').replace(/"/g, '""')}"`,
+      `"${(log.target_roll || '').replace(/"/g, '""')}"`,
+      `"${(log.details || '').replace(/"/g, '""')}"`,
+    ]);
+    const csvContent = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `agent_audit_history_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const formatAuditTimestamp = (ts: string) => {
+    try {
+      const d = new Date(ts);
+      return d.toLocaleString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      });
+    } catch {
+      return ts;
+    }
+  };
+
+  const filteredAuditLogs = useMemo(() => {
+    if (!auditLogs) return [];
+    return auditLogs.filter((log) => {
+      if (auditFilterAction !== 'ALL') {
+        if (auditFilterAction === 'LOGINS') {
+          if (log.action !== 'AGENT_LOGIN' && log.action !== 'AGENT_LOGOUT') return false;
+        } else if (auditFilterAction === 'VOTES_MARKED') {
+          if (log.action !== 'VOTE_MARKED') return false;
+        } else if (auditFilterAction === 'VOTES_UNMARKED') {
+          if (log.action !== 'VOTE_UNMARKED') return false;
+        } else if (auditFilterAction === 'SPOT_REGISTER') {
+          if (log.action !== 'SPOT_REGISTER') return false;
+        }
+      }
+
+      if (auditSearchQuery.trim()) {
+        const query = auditSearchQuery.toLowerCase();
+        const actorName = (log.actor_name || '').toLowerCase();
+        const actorUser = (log.actor_username || '').toLowerCase();
+        const targetName = (log.target_name || '').toLowerCase();
+        const targetRoll = (log.target_roll || '').toLowerCase();
+        const details = (log.details || '').toLowerCase();
+        const action = (log.action || '').toLowerCase();
+
+        return (
+          actorName.includes(query) ||
+          actorUser.includes(query) ||
+          targetName.includes(query) ||
+          targetRoll.includes(query) ||
+          details.includes(query) ||
+          action.includes(query)
+        );
+      }
+
+      return true;
+    });
+  }, [auditLogs, auditFilterAction, auditSearchQuery]);
+
+  const displayedAuditLogs = useMemo(() => {
+    if (auditPageSize === 'ALL') return filteredAuditLogs;
+    return filteredAuditLogs.slice(0, auditPageSize);
+  }, [filteredAuditLogs, auditPageSize]);
+
+  const getActionBadge = (action: string) => {
+    switch (action) {
+      case 'AGENT_LOGIN':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <LogIn className="w-3 h-3 text-emerald-600" />
+            Agent Login
+          </span>
+        );
+      case 'AGENT_LOGOUT':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+            <LogOut className="w-3 h-3 text-amber-600" />
+            Agent Logout
+          </span>
+        );
+      case 'VOTE_MARKED':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
+            <CheckCircle2 className="w-3 h-3 text-blue-600" />
+            Vote Marked
+          </span>
+        );
+      case 'VOTE_UNMARKED':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
+            <RotateCcw className="w-3 h-3 text-rose-600" />
+            Vote Unmarked
+          </span>
+        );
+      case 'SPOT_REGISTER':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 border border-purple-200">
+            <UserPlus className="w-3 h-3 text-purple-600" />
+            Spot Register
+          </span>
+        );
+      case 'STUDENT_UPDATED':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-cyan-50 text-cyan-700 border border-cyan-200">
+            <Edit3 className="w-3 h-3 text-cyan-600" />
+            Record Updated
+          </span>
+        );
+      case 'STUDENT_DELETED':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-red-50 text-red-700 border border-red-200">
+            <Trash2 className="w-3 h-3 text-red-600" />
+            Record Deleted
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">
+            {action}
+          </span>
+        );
+    }
+  };
 
   const handleCreateUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -658,6 +824,196 @@ export const ToolsView: React.FC = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* SECTION 2.5: AGENT ACTIVITY & AUDIT TRAIL */}
+      {/* ============================================================ */}
+      <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-2xs space-y-4">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <History className="w-4 h-4 text-indigo-600" />
+                Agent Activity & Audit Trail
+              </h3>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                {auditLogs.length} Records
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Live audit history of agent logins, logouts, vote markings, and vote unmarkings. Viewer actions are not logged.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 flex-wrap self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={handleRefreshAudit}
+              disabled={isRefreshingAudit}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold touch-scale transition-all"
+              title="Refresh audit logs"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isRefreshingAudit ? 'animate-spin text-indigo-600' : ''}`} />
+              <span>Refresh</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleExportAuditLogsCsv}
+              disabled={!auditLogs || auditLogs.length === 0}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-bold touch-scale transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Download complete audit log as CSV"
+            >
+              <Download className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Filters and Search Bar */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          {/* Action Filter Pills */}
+          <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+            {[
+              { id: 'ALL', label: `All (${auditLogs.length})` },
+              { id: 'LOGINS', label: 'Logins & Logouts' },
+              { id: 'VOTES_MARKED', label: 'Votes Marked' },
+              { id: 'VOTES_UNMARKED', label: 'Votes Unmarked' },
+              { id: 'SPOT_REGISTER', label: 'Spot Adds' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setAuditFilterAction(tab.id)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+                  auditFilterAction === tab.id
+                    ? 'bg-indigo-600 text-white shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Box */}
+          <div className="relative min-w-[200px] sm:w-64">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={auditSearchQuery}
+              onChange={(e) => setAuditSearchQuery(e.target.value)}
+              placeholder="Search agent, roll, student..."
+              className="w-full bg-white border border-slate-200 text-slate-900 rounded-lg pl-8 pr-3 py-1.5 text-xs focus:outline-none focus:border-indigo-500 font-medium placeholder:text-slate-400"
+            />
+            {auditSearchQuery && (
+              <button
+                onClick={() => setAuditSearchQuery('')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
+              >
+                ×
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Page / View Size Controls */}
+        <div className="flex items-center justify-between text-xs text-slate-500 px-1">
+          <span>
+            Showing <strong className="text-slate-800">{displayedAuditLogs.length}</strong> of{' '}
+            <strong className="text-slate-800">{filteredAuditLogs.length}</strong> entries
+            {auditFilterAction !== 'ALL' && ` (filtered)`}
+          </span>
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] font-medium text-slate-400">View:</span>
+            {[
+              { val: 50, label: '50' },
+              { val: 250, label: '250' },
+              { val: 'ALL', label: 'All History' },
+            ].map((opt) => (
+              <button
+                key={opt.label}
+                type="button"
+                onClick={() => setAuditPageSize(opt.val as any)}
+                className={`px-2 py-0.5 rounded text-[11px] font-bold ${
+                  auditPageSize === opt.val
+                    ? 'bg-slate-800 text-white'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Audit Log Entries List / Table */}
+        {displayedAuditLogs.length === 0 ? (
+          <div className="py-12 text-center border border-dashed border-slate-200 rounded-xl bg-slate-50/50">
+            <History className="w-8 h-8 text-slate-300 mx-auto mb-2" />
+            <p className="text-xs font-semibold text-slate-600">No audit events match your search or filter</p>
+            <p className="text-[11px] text-slate-400 mt-0.5">
+              Actions by polling agents (logins, logouts, voting, spot registrations) will appear here in real-time.
+            </p>
+          </div>
+        ) : (
+          <div className="border border-slate-200 rounded-xl overflow-hidden max-h-[580px] overflow-y-auto divide-y divide-slate-100 shadow-2xs">
+            {displayedAuditLogs.map((log) => (
+              <div
+                key={log.id}
+                className="p-3 hover:bg-slate-50/80 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-2.5"
+              >
+                <div className="flex items-start gap-3 min-w-0">
+                  <div className="pt-0.5 shrink-0">{getActionBadge(log.action)}</div>
+
+                  <div className="min-w-0 space-y-0.5">
+                    <p className="text-xs text-slate-800 font-medium leading-relaxed">
+                      {log.details}
+                    </p>
+
+                    <div className="flex items-center gap-2 text-[11px] text-slate-500 flex-wrap">
+                      <span className="font-semibold text-slate-700 flex items-center gap-1">
+                        By: <span className="text-indigo-900 font-bold">{log.actor_name || log.actor_username}</span>
+                        <span className="text-slate-400 font-mono text-[10px]">(@{log.actor_username})</span>
+                      </span>
+
+                      <span className="text-slate-300">•</span>
+
+                      <span
+                        className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded ${
+                          log.actor_role === 'admin'
+                            ? 'bg-indigo-50 text-indigo-700'
+                            : 'bg-blue-50 text-blue-700'
+                        }`}
+                      >
+                        {log.actor_role === 'admin' ? 'Chief Officer' : 'Polling Agent'}
+                      </span>
+
+                      {log.target_roll && (
+                        <>
+                          <span className="text-slate-300">•</span>
+                          <span className="font-mono text-slate-600 bg-slate-100 px-1.5 py-0.2 rounded text-[10px]">
+                            Roll: {log.target_roll}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Timestamp */}
+                <div className="shrink-0 text-left sm:text-right text-[11px] font-mono text-slate-500 bg-slate-50 sm:bg-transparent px-2 sm:px-0 py-1 sm:py-0 rounded">
+                  <span className="font-semibold text-slate-700 block">
+                    {formatAuditTimestamp(log.timestamp)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ============================================================ */}

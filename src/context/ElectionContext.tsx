@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import confetti from 'canvas-confetti';
-import type { Student, VoterStatus, TabType, ElectionStats, SyncMessage, UserRole, AuthUser, UserAccount } from '../types';
+import type { Student, VoterStatus, TabType, ElectionStats, SyncMessage, UserRole, AuthUser, UserAccount, AuditLogEntry } from '../types';
 import { SAMPLE_STUDENTS } from '../utils/constants';
 import { sound } from '../utils/sound';
 import { triggerHaptic } from '../utils/haptics';
@@ -51,6 +51,8 @@ interface ElectionContextType {
   login: (username: string, password: string) => Promise<{ success: boolean; message?: string }>;
   logout: () => void;
   refreshAccounts: () => Promise<void>;
+  auditLogs: AuditLogEntry[];
+  refreshAuditLogs: () => Promise<void>;
 }
 
 const ElectionContext = createContext<ElectionContextType | undefined>(undefined);
@@ -128,6 +130,8 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Accounts state (Admin Only, populated from server)
   const [accounts, setAccounts] = useState<UserAccount[]>([]);
+  // Audit Logs state (All history)
+  const [auditLogs, setAuditLogs] = useState<AuditLogEntry[]>([]);
 
   // Function to fetch accounts securely from server
   const refreshAccounts = useCallback(async (tokenOverride?: string) => {
@@ -148,6 +152,28 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
     } catch (e) {
       console.error('[Auth] Failed to load server accounts:', e);
+    }
+  }, [currentUser?.token]);
+
+  // Function to fetch audit logs securely from server
+  const refreshAuditLogs = useCallback(async (tokenOverride?: string) => {
+    const token = tokenOverride || currentUser?.token;
+    if (!token) return;
+
+    try {
+      const res = await fetch(`${getApiBase()}/api/audit-logs`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setAuditLogs(data);
+        }
+      }
+    } catch (e) {
+      console.error('[Audit] Failed to load server audit logs:', e);
     }
   }, [currentUser?.token]);
 
@@ -172,6 +198,7 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
               if (data.user.role === 'admin') {
                 refreshAccounts(currentUser.token);
               }
+              refreshAuditLogs(currentUser.token);
             }
           });
         }
@@ -224,6 +251,7 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       if (user.role === 'admin') {
         refreshAccounts(data.token);
       }
+      refreshAuditLogs(data.token);
 
       return { success: true };
     } catch (err: any) {
@@ -238,6 +266,16 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const logout = () => {
+    if (currentUser?.token && currentUser.role !== 'viewer') {
+      try {
+        fetch(`${getApiBase()}/api/auth/logout`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${currentUser.token}`,
+          },
+        }).catch(() => {});
+      } catch {}
+    }
     setCurrentUser(null);
     setUserRoleState('viewer');
     setAccounts([]);
@@ -386,8 +424,15 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
               return;
             }
 
-            if (data.type === 'INIT' && Array.isArray(data.payload) && data.payload.length > 0) {
-              setStudents(data.payload);
+            if (data.type === 'INIT') {
+              if (Array.isArray(data.payload) && data.payload.length > 0) {
+                setStudents(data.payload);
+              }
+              if (data.auditLogs && Array.isArray(data.auditLogs)) {
+                setAuditLogs(data.auditLogs);
+              }
+            } else if (data.type === 'AUDIT_LOG_ADDED' && data.payload) {
+              setAuditLogs((prev) => [data.payload, ...prev.filter((x) => x.id !== data.payload.id)]);
             } else if (data.type === 'UPDATE_VOTE') {
               const { id, status, votedAt, votedBy } = data.payload;
               setStudents((prev) =>
@@ -682,6 +727,8 @@ export const ElectionProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         login,
         logout,
         refreshAccounts,
+        auditLogs,
+        refreshAuditLogs,
       }}
     >
       {children}

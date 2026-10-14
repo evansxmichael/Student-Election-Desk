@@ -53,9 +53,32 @@ export interface ElectionStats {
   courseStats: Record<string, { total: number; voted: number }>;
 }
 
+export type AuditActionType =
+  | 'AGENT_LOGIN'
+  | 'AGENT_LOGOUT'
+  | 'VOTE_MARKED'
+  | 'VOTE_UNMARKED'
+  | 'SPOT_REGISTER'
+  | 'STUDENT_UPDATED'
+  | 'STUDENT_DELETED';
+
+export interface AuditLogEntry {
+  id: string;
+  timestamp: string;
+  action: AuditActionType;
+  actor_username: string;
+  actor_name: string;
+  actor_role: UserRole;
+  target_id?: string;
+  target_name?: string;
+  target_roll?: string;
+  details: string;
+}
+
 export interface SyncMessage {
-  type: 'INIT' | 'UPDATE_VOTE' | 'ADD_STUDENT' | 'UPDATE_STUDENT' | 'DELETE_STUDENT' | 'BATCH_IMPORT' | 'RESET_ALL' | 'PING' | 'AUTH_ERROR';
+  type: 'INIT' | 'UPDATE_VOTE' | 'ADD_STUDENT' | 'UPDATE_STUDENT' | 'DELETE_STUDENT' | 'BATCH_IMPORT' | 'RESET_ALL' | 'PING' | 'AUTH_ERROR' | 'AUDIT_LOG_ADDED';
   payload?: any;
+  auditLogs?: AuditLogEntry[];
   timestamp: number;
   senderId: string;
   token?: string;
