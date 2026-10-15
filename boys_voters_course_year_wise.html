@@ -1,0 +1,4347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Male Voters Roll - Course & Year Wise</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm 14mm 10mm;
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: #0f172a;
+      line-height: 1.35;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    /* Cover / Main Header */
+    .header {
+      border: 2px solid #0f172a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-left h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .header-left .sub {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-left .desc {
+      font-size: 10px;
+      color: #475569;
+      margin-top: 4px;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .stat-pill {
+      background: #1e40af;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .stat-pill .num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-pill .lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    /* Summary Card */
+    .summary-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .summary-title {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 8px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+
+    .summary-table th {
+      background: #f1f5f9;
+      padding: 6px 10px;
+      text-align: left;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .summary-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .summary-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Group Sections */
+    .page-break-before {
+      page-break-before: always;
+    }
+
+    .group-section {
+      margin-bottom: 22px;
+    }
+
+    .group-header {
+      background: #1e40af;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 6px 6px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      page-break-after: avoid;
+    }
+
+    .group-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .group-badge {
+      background: #ffffff;
+      color: #1e40af;
+      font-size: 10px;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .group-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    .group-subtitle {
+      font-size: 9.5px;
+      color: #bfdbfe;
+      margin-top: 1px;
+    }
+
+    .group-meta {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-left: 1px solid #cbd5e1;
+      border-right: 1px solid #cbd5e1;
+      border-bottom: 1px solid #cbd5e1;
+      font-size: 10px;
+    }
+
+    .data-table thead {
+      display: table-header-group;
+    }
+
+    .data-table tr {
+      page-break-inside: avoid;
+    }
+
+    .data-table th {
+      background: #f8fafc;
+      padding: 6px 8px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      border-bottom: 1px solid #cbd5e1;
+      border-right: 1px solid #e2e8f0;
+      text-align: left;
+    }
+
+    .data-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+
+    .data-table tr:nth-child(even) td {
+      background: #fbfcfe;
+    }
+
+    .col-num {
+      text-align: center;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .col-roll {
+      font-family: monospace;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .col-name {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-hostel {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-outside {
+      background: #faf5ff;
+      color: #6b21a8;
+      border: 1px solid #e9d5ff;
+    }
+
+    .status-voted {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 700;
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status-pending {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+    }
+
+    .sign-box {
+      border-bottom: 1px dashed #94a3b8;
+      height: 18px;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    /* Officer Signatures */
+    .officer-signatures {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      page-break-inside: avoid;
+      padding: 0 20px;
+    }
+
+    .officer-box {
+      text-align: center;
+      width: 170px;
+    }
+
+    .officer-line {
+      border-bottom: 1.5px solid #0f172a;
+      height: 35px;
+      margin-bottom: 6px;
+    }
+
+    .officer-title {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+
+    .officer-desc {
+      font-size: 8.5px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Institutional Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Student Council Election 2026</h1>
+      <div class="sub">Official Male Voters Electoral Roll (Course & Year-Wise)</div>
+      <div class="desc">Polling Desk Attendance & Verification Register &bull; Boys Booth Roster</div>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <div class="num">366</div>
+        <div class="lbl">Male Voters</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="summary-card">
+    <div class="summary-title">Department & Academic Year Executive Summary (Boys Booth)</div>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th style="width: 40px; text-align: center;">#</th>
+          <th>Academic Course / Department</th>
+          <th style="width: 140px;">Academic Stage / Year</th>
+          <th style="width: 110px; text-align: center;">Eligible Male Voters</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">1</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">45</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">2</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">49</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">3</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">3rd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">47</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">4</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">4th Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">48</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">5</td>
+    <td style="font-weight: 700; color: #0f172a;">M.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">18</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">6</td>
+    <td style="font-weight: 700; color: #0f172a;">M.Tech (Computer Science)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">16</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">7</td>
+    <td style="font-weight: 700; color: #0f172a;">MCA</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">27</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">8</td>
+    <td style="font-weight: 700; color: #0f172a;">MCA</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">16</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">9</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech Civil (SF)</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">29</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">10</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Tech Civil (SF)</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">34</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">11</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">11</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">12</td>
+    <td style="font-weight: 700; color: #0f172a;">Diploma Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">3</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">13</td>
+    <td style="font-weight: 700; color: #0f172a;">Diploma Fashion Technology</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">2</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">14</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">11</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">15</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">5</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">16</td>
+    <td style="font-weight: 700; color: #0f172a;">B.Sc Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">3rd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">1</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">17</td>
+    <td style="font-weight: 700; color: #0f172a;">Diploma Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">1st Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">3</td>
+  </tr>
+
+  <tr>
+    <td style="text-align: center; font-weight: 600; color: #475569;">18</td>
+    <td style="font-weight: 700; color: #0f172a;">Diploma Interior Design</td>
+    <td style="color: #334155; font-weight: 600;">2nd Year</td>
+    <td style="text-align: center; font-weight: 800; color: #1e40af;">1</td>
+  </tr>
+
+        <tr style="background: #eff6ff; font-weight: 800;">
+          <td colspan="3" style="text-align: right; text-transform: uppercase; font-size: 10px; color: #1e40af;">Total Verified Male Voters:</td>
+          <td style="text-align: center; font-size: 12px; color: #1e40af;">366</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Detailed Course & Year Sections -->
+  
+    <div class="group-section ">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">1</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>45</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">1</td>
+        <td class="col-roll"><code>26BTCS002HY</code></td>
+        <td class="col-name">MOHAMMAD SAFDAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">2</td>
+        <td class="col-roll"><code>26BTCS003HY</code></td>
+        <td class="col-name">ABU NASAR ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">3</td>
+        <td class="col-roll"><code>26BTCS005HY</code></td>
+        <td class="col-name">MOHD UMAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">4</td>
+        <td class="col-roll"><code>26BTCS007HY</code></td>
+        <td class="col-name">MD HANZALA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">5</td>
+        <td class="col-roll"><code>26BTCS008HY</code></td>
+        <td class="col-name">JINAS</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">6</td>
+        <td class="col-roll"><code>26BTCS009HY</code></td>
+        <td class="col-name">RAHIL NABI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">7</td>
+        <td class="col-roll"><code>26BTCS011HY</code></td>
+        <td class="col-name">AREEB AHSAN MUMTAZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">8</td>
+        <td class="col-roll"><code>26BTCS012HY</code></td>
+        <td class="col-name">SHAFI AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">9</td>
+        <td class="col-roll"><code>26BTCS015HY</code></td>
+        <td class="col-name">MD KHUSHNUD ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">10</td>
+        <td class="col-roll"><code>26BTCS016HY</code></td>
+        <td class="col-name">SOHAIB RASHID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">11</td>
+        <td class="col-roll"><code>26BTCS018HY</code></td>
+        <td class="col-name">AZZAM BIN OTHMAN BASAHAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">12</td>
+        <td class="col-roll"><code>26BTCS019HY</code></td>
+        <td class="col-name">ATIF RAZA KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">13</td>
+        <td class="col-roll"><code>26BTCS020HY</code></td>
+        <td class="col-name">MOHD RASHID KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">14</td>
+        <td class="col-roll"><code>26BTCS021HY</code></td>
+        <td class="col-name">MD SHAHZAD ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">15</td>
+        <td class="col-roll"><code>26BTCS022HY</code></td>
+        <td class="col-name">SAHIL AKHTAR KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">16</td>
+        <td class="col-roll"><code>26BTCS023HY</code></td>
+        <td class="col-name">MD QUAMRUZZAMA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">17</td>
+        <td class="col-roll"><code>26BTCS024HY</code></td>
+        <td class="col-name">MD SHAHID ALI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">18</td>
+        <td class="col-roll"><code>26BTCS025HY</code></td>
+        <td class="col-name">SOHEB AKHTAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">19</td>
+        <td class="col-roll"><code>26BTCS027HY</code></td>
+        <td class="col-name">ABDUL KAREEM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">20</td>
+        <td class="col-roll"><code>26BTCS028HY</code></td>
+        <td class="col-name">MUDASSIR IQBAL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">21</td>
+        <td class="col-roll"><code>26BTCS029HY</code></td>
+        <td class="col-name">MD FAIZAN ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">22</td>
+        <td class="col-roll"><code>26BTCS030HY</code></td>
+        <td class="col-name">ZUNOOR JAMEEL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">23</td>
+        <td class="col-roll"><code>26BTCS031HY</code></td>
+        <td class="col-name">ABU QAIS</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">24</td>
+        <td class="col-roll"><code>26BTCS032HY</code></td>
+        <td class="col-name">MOHAMMAD UMAR KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">25</td>
+        <td class="col-roll"><code>26BTCS034HY</code></td>
+        <td class="col-name">MD MOIDUR RAHMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">26</td>
+        <td class="col-roll"><code>26BTCS035HY</code></td>
+        <td class="col-name">MOHAMMAD ZAHID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">27</td>
+        <td class="col-roll"><code>26BTCS036HY</code></td>
+        <td class="col-name">MOHAMMAD WASIULLAH</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">28</td>
+        <td class="col-roll"><code>26BTCS037HY</code></td>
+        <td class="col-name">MD NAJEEB ZEYA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">29</td>
+        <td class="col-roll"><code>26BTCS038HY</code></td>
+        <td class="col-name">SAIF KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">30</td>
+        <td class="col-roll"><code>26BTCS040HY</code></td>
+        <td class="col-name">MD SUFIYAN ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">31</td>
+        <td class="col-roll"><code>26BTCS043HY</code></td>
+        <td class="col-name">MD IRFAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">32</td>
+        <td class="col-roll"><code>26BTCS044HY</code></td>
+        <td class="col-name">MD SAWOOD ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">33</td>
+        <td class="col-roll"><code>26BTCS046HY</code></td>
+        <td class="col-name">MOHAMMAD SHAHANSHA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">34</td>
+        <td class="col-roll"><code>26BTCS047HY</code></td>
+        <td class="col-name">DANISH ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">35</td>
+        <td class="col-roll"><code>26BTCS048HY</code></td>
+        <td class="col-name">EID MOHAMMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">36</td>
+        <td class="col-roll"><code>26BTCS049HY</code></td>
+        <td class="col-name">MD HASHIR ASHRAF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">37</td>
+        <td class="col-roll"><code>26BTCS050HY</code></td>
+        <td class="col-name">MD JAHRUL HAQUE</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">38</td>
+        <td class="col-roll"><code>26BTCS052HY</code></td>
+        <td class="col-name">YUSUF EJAZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">39</td>
+        <td class="col-roll"><code>26BTCS053HY</code></td>
+        <td class="col-name">SHAKIR RAZA RAZA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">40</td>
+        <td class="col-roll"><code>26BTCS054HY</code></td>
+        <td class="col-name">WASIF RABBANI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">41</td>
+        <td class="col-roll"><code>26BTCS055HY</code></td>
+        <td class="col-name">MD SERAJ AKHTAR SIDDIQUE</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">42</td>
+        <td class="col-roll"><code>26BTCS057HY</code></td>
+        <td class="col-name">AIRAF RAZA KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">43</td>
+        <td class="col-roll"><code>26BTCS058HY</code></td>
+        <td class="col-name">MOHAMMAD OSAID</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">44</td>
+        <td class="col-roll"><code>26BTCS059HY</code></td>
+        <td class="col-name">BELAL AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">45</td>
+        <td class="col-roll"><code>26BTCS061HY</code></td>
+        <td class="col-name">AFFAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">2</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>49</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">46</td>
+        <td class="col-roll"><code>26BLSC001HY</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">47</td>
+        <td class="col-roll"><code>26BLSC002HY</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">48</td>
+        <td class="col-roll"><code>26BLSC003HY</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">49</td>
+        <td class="col-roll"><code>26BLSC004HY</code></td>
+        <td class="col-name">Student 4</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">50</td>
+        <td class="col-roll"><code>26BLSC005HY</code></td>
+        <td class="col-name">Student 5</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">51</td>
+        <td class="col-roll"><code>26BLSC006HY</code></td>
+        <td class="col-name">Student 6</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">52</td>
+        <td class="col-roll"><code>26BLSC007HY</code></td>
+        <td class="col-name">Student 7</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">53</td>
+        <td class="col-roll"><code>26BLSC008HY</code></td>
+        <td class="col-name">Student 8</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">54</td>
+        <td class="col-roll"><code>26BLSC009HY</code></td>
+        <td class="col-name">Student 9</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">55</td>
+        <td class="col-roll"><code>26BLSC010HY</code></td>
+        <td class="col-name">Student 10</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">56</td>
+        <td class="col-roll"><code>A250022</code></td>
+        <td class="col-name">ZAKIR ANWAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">57</td>
+        <td class="col-roll"><code>A250023</code></td>
+        <td class="col-name">MOHAMMAD MOHTASIM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">58</td>
+        <td class="col-roll"><code>A250031</code></td>
+        <td class="col-name">MOHAMMAD RIZWAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">59</td>
+        <td class="col-roll"><code>A250035</code></td>
+        <td class="col-name">MD FARHAN AKHTAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">60</td>
+        <td class="col-roll"><code>A250036</code></td>
+        <td class="col-name">ABDUL MANNAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">61</td>
+        <td class="col-roll"><code>A250037</code></td>
+        <td class="col-name">HASAN ZUBAIR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">62</td>
+        <td class="col-roll"><code>A250038</code></td>
+        <td class="col-name">SHAHID HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">63</td>
+        <td class="col-roll"><code>A250040</code></td>
+        <td class="col-name">MD AARIF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">64</td>
+        <td class="col-roll"><code>A250042</code></td>
+        <td class="col-name">TARIQUE ANWAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">65</td>
+        <td class="col-roll"><code>A250044</code></td>
+        <td class="col-name">MOHD LUQMAN KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">66</td>
+        <td class="col-roll"><code>A250045</code></td>
+        <td class="col-name">ABU HAMZA RIZWI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">67</td>
+        <td class="col-roll"><code>A250046</code></td>
+        <td class="col-name">MD MUDASSIR KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">68</td>
+        <td class="col-roll"><code>A250047</code></td>
+        <td class="col-name">WAHAB AHMAD ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">69</td>
+        <td class="col-roll"><code>A250049</code></td>
+        <td class="col-name">ABU SUFIYAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">70</td>
+        <td class="col-roll"><code>A250050</code></td>
+        <td class="col-name">RAIHAN AHMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">71</td>
+        <td class="col-roll"><code>A250053</code></td>
+        <td class="col-name">MOIN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">72</td>
+        <td class="col-roll"><code>A250054</code></td>
+        <td class="col-name">AAMIR HASAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">73</td>
+        <td class="col-roll"><code>A250055</code></td>
+        <td class="col-name">MOHAMMAD SALMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">74</td>
+        <td class="col-roll"><code>A250056</code></td>
+        <td class="col-name">AUSAF HASAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">75</td>
+        <td class="col-roll"><code>A250057</code></td>
+        <td class="col-name">ABDUS SAMAD ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">76</td>
+        <td class="col-roll"><code>A250058</code></td>
+        <td class="col-name">IFTEDAR KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">77</td>
+        <td class="col-roll"><code>A250060</code></td>
+        <td class="col-name">ABDUL MUTTALIB</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">78</td>
+        <td class="col-roll"><code>A250062</code></td>
+        <td class="col-name">MD MERAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">79</td>
+        <td class="col-roll"><code>A250063</code></td>
+        <td class="col-name">MD EHTESHAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">80</td>
+        <td class="col-roll"><code>A250065</code></td>
+        <td class="col-name">AFROZ AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">81</td>
+        <td class="col-roll"><code>A250066</code></td>
+        <td class="col-name">SHAIBAN ALI SYED</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">82</td>
+        <td class="col-roll"><code>A250067</code></td>
+        <td class="col-name">MOHD ADNAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">83</td>
+        <td class="col-roll"><code>A250068</code></td>
+        <td class="col-name">MOBASSIR ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">84</td>
+        <td class="col-roll"><code>A250069</code></td>
+        <td class="col-name">MOHD AATIF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">85</td>
+        <td class="col-roll"><code>A250071</code></td>
+        <td class="col-name">MOHD SHARIQ ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">86</td>
+        <td class="col-roll"><code>A250072</code></td>
+        <td class="col-name">MOAZ FAROOQUI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">87</td>
+        <td class="col-roll"><code>A250075</code></td>
+        <td class="col-name">MD RAGIB ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">88</td>
+        <td class="col-roll"><code>A250076</code></td>
+        <td class="col-name">MOHD AQEEL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">89</td>
+        <td class="col-roll"><code>A250077</code></td>
+        <td class="col-name">MD AMIR HAMZA KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">90</td>
+        <td class="col-roll"><code>A250081</code></td>
+        <td class="col-name">IRFAN ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">91</td>
+        <td class="col-roll"><code>A250083</code></td>
+        <td class="col-name">ABU ANAS</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">92</td>
+        <td class="col-roll"><code>A250085</code></td>
+        <td class="col-name">MOBASHSHIR RAHMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">93</td>
+        <td class="col-roll"><code>A250086</code></td>
+        <td class="col-name">ALAA MUSTAFA MANSOOR AL-TAJ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">94</td>
+        <td class="col-roll"><code>A251037</code></td>
+        <td class="col-name">MOHD RAQIB</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">3</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">3rd Year &bull; Total Candidates: <strong>47</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">95</td>
+        <td class="col-roll"><code>A200549</code></td>
+        <td class="col-name">MD IMAMUL HAQ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">96</td>
+        <td class="col-roll"><code>A200550</code></td>
+        <td class="col-name">MD AASHIK</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">97</td>
+        <td class="col-roll"><code>A210396</code></td>
+        <td class="col-name">RASHID QAMAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">98</td>
+        <td class="col-roll"><code>A210465</code></td>
+        <td class="col-name">MD SHAHID JAMAL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">99</td>
+        <td class="col-roll"><code>A210538</code></td>
+        <td class="col-name">AZHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">100</td>
+        <td class="col-roll"><code>A221077</code></td>
+        <td class="col-name">MD KARIM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">101</td>
+        <td class="col-roll"><code>A221318</code></td>
+        <td class="col-name">MD ARSHAD ALI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">102</td>
+        <td class="col-roll"><code>A240007</code></td>
+        <td class="col-name">MOH ASIF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">103</td>
+        <td class="col-roll"><code>A240011</code></td>
+        <td class="col-name">UMAR RASHID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">104</td>
+        <td class="col-roll"><code>A240013</code></td>
+        <td class="col-name">MOHD NAYAB RAZA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">105</td>
+        <td class="col-roll"><code>A240014</code></td>
+        <td class="col-name">ADNAN ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">106</td>
+        <td class="col-roll"><code>A240015</code></td>
+        <td class="col-name">SHAHID RAJA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">107</td>
+        <td class="col-roll"><code>A240016</code></td>
+        <td class="col-name">OKASHA MAAZ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">108</td>
+        <td class="col-roll"><code>A240018</code></td>
+        <td class="col-name">MOHD ANIS KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">109</td>
+        <td class="col-roll"><code>A240020</code></td>
+        <td class="col-name">MOHAMMAD SAJID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">110</td>
+        <td class="col-roll"><code>A240021</code></td>
+        <td class="col-name">MOHAMMAD SADIQUE</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">111</td>
+        <td class="col-roll"><code>A240022</code></td>
+        <td class="col-name">MOHD ZEESHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">112</td>
+        <td class="col-roll"><code>A240024</code></td>
+        <td class="col-name">MD SAMAR KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">113</td>
+        <td class="col-roll"><code>A240025</code></td>
+        <td class="col-name">MD NOOR ISLAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">114</td>
+        <td class="col-roll"><code>A240026</code></td>
+        <td class="col-name">MD ARMAN ALI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">115</td>
+        <td class="col-roll"><code>A240028</code></td>
+        <td class="col-name">MOHD SADIQ</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">116</td>
+        <td class="col-roll"><code>A240030</code></td>
+        <td class="col-name">MOHAMMAD SAKIB</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">117</td>
+        <td class="col-roll"><code>A240032</code></td>
+        <td class="col-name">MD FURQUAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">118</td>
+        <td class="col-roll"><code>A240033</code></td>
+        <td class="col-name">IMBASAT AQDASH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">119</td>
+        <td class="col-roll"><code>A240034</code></td>
+        <td class="col-name">MD ATAULLAH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">120</td>
+        <td class="col-roll"><code>A240036</code></td>
+        <td class="col-name">MOHD MAROOF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">121</td>
+        <td class="col-roll"><code>A240037</code></td>
+        <td class="col-name">MD MAMUN RABBANI KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">122</td>
+        <td class="col-roll"><code>A240038</code></td>
+        <td class="col-name">ZIA UR REHMAN SIDDIQUI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">123</td>
+        <td class="col-roll"><code>A240040</code></td>
+        <td class="col-name">AEHSAN ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">124</td>
+        <td class="col-roll"><code>A240041</code></td>
+        <td class="col-name">KAVISH KAMAL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">125</td>
+        <td class="col-roll"><code>A240042</code></td>
+        <td class="col-name">MD DANISH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">126</td>
+        <td class="col-roll"><code>A240044</code></td>
+        <td class="col-name">FAIZAN FAHAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">127</td>
+        <td class="col-roll"><code>A240045</code></td>
+        <td class="col-name">AFZAL IRAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">128</td>
+        <td class="col-roll"><code>A240048</code></td>
+        <td class="col-name">MD SADIQUE</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">129</td>
+        <td class="col-roll"><code>A240049</code></td>
+        <td class="col-name">ABU OBAIDA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">130</td>
+        <td class="col-roll"><code>A240050</code></td>
+        <td class="col-name">MOHD ARSALANUL HUDA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">131</td>
+        <td class="col-roll"><code>A240052</code></td>
+        <td class="col-name">MD SHOAIB ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">132</td>
+        <td class="col-roll"><code>A240053</code></td>
+        <td class="col-name">MD FARID ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">133</td>
+        <td class="col-roll"><code>A240210</code></td>
+        <td class="col-name">MOHD JAWAD KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">134</td>
+        <td class="col-roll"><code>A240211</code></td>
+        <td class="col-name">MD ALTAF ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">135</td>
+        <td class="col-roll"><code>A241258</code></td>
+        <td class="col-name">MD IMRAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">136</td>
+        <td class="col-roll"><code>A251901</code></td>
+        <td class="col-name">WAQAR YUNUS</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">137</td>
+        <td class="col-roll"><code>A251903</code></td>
+        <td class="col-name">ABDUS SAMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">138</td>
+        <td class="col-roll"><code>A251906</code></td>
+        <td class="col-name">MD JUNAID KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">139</td>
+        <td class="col-roll"><code>A251908</code></td>
+        <td class="col-name">MOHD YASIR ARMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">140</td>
+        <td class="col-roll"><code>A251911</code></td>
+        <td class="col-name">MOHD MAHMOOD KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">141</td>
+        <td class="col-roll"><code>A252266</code></td>
+        <td class="col-name">FAISAL NAZIR NANDA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">4</span>
+          <div>
+            <h2 class="group-title">B.Tech (Computer Science)</h2>
+            <div class="group-subtitle">4th Year &bull; Total Candidates: <strong>48</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">142</td>
+        <td class="col-roll"><code>A191002</code></td>
+        <td class="col-name">MD AAYAN ASLAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">143</td>
+        <td class="col-roll"><code>A200504</code></td>
+        <td class="col-name">MD SHADAB GHAZI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">144</td>
+        <td class="col-roll"><code>A200676</code></td>
+        <td class="col-name">MD ADNAN ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">145</td>
+        <td class="col-roll"><code>A210461</code></td>
+        <td class="col-name">MD ANEES KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">146</td>
+        <td class="col-roll"><code>A210477</code></td>
+        <td class="col-name">MD SOHAIL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">147</td>
+        <td class="col-roll"><code>A210480</code></td>
+        <td class="col-name">Sakandar Hayat</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">148</td>
+        <td class="col-roll"><code>A230089</code></td>
+        <td class="col-name">MOHD HAMDAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">149</td>
+        <td class="col-roll"><code>A230090</code></td>
+        <td class="col-name">BASIM AHMAD KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">150</td>
+        <td class="col-roll"><code>A230091</code></td>
+        <td class="col-name">MAAZ HASAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">151</td>
+        <td class="col-roll"><code>A230093</code></td>
+        <td class="col-name">YUSUF HANZALA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">152</td>
+        <td class="col-roll"><code>A230094</code></td>
+        <td class="col-name">MD RIYAZ ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">153</td>
+        <td class="col-roll"><code>A230095</code></td>
+        <td class="col-name">MOHD SAQIB</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">154</td>
+        <td class="col-roll"><code>A230096</code></td>
+        <td class="col-name">UMAR HANZALA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">155</td>
+        <td class="col-roll"><code>A230097</code></td>
+        <td class="col-name">ABDUR RAHMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">156</td>
+        <td class="col-roll"><code>A230098</code></td>
+        <td class="col-name">MOHD RIZWAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">157</td>
+        <td class="col-roll"><code>A230099</code></td>
+        <td class="col-name">MD YAKIN ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">158</td>
+        <td class="col-roll"><code>A230101</code></td>
+        <td class="col-name">MOHAMMAD ARIF</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">159</td>
+        <td class="col-roll"><code>A230103</code></td>
+        <td class="col-name">MD AQUIB HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">160</td>
+        <td class="col-roll"><code>A230104</code></td>
+        <td class="col-name">SAIFURRAHMAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">161</td>
+        <td class="col-roll"><code>A230105</code></td>
+        <td class="col-name">MOHAMMAD ISMAIL ZIA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">162</td>
+        <td class="col-roll"><code>A230106</code></td>
+        <td class="col-name">MD KAIF AKHTAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">163</td>
+        <td class="col-roll"><code>A230111</code></td>
+        <td class="col-name">NESAR AHMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">164</td>
+        <td class="col-roll"><code>A230113</code></td>
+        <td class="col-name">MAAZ RAQUIB</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">165</td>
+        <td class="col-roll"><code>A230114</code></td>
+        <td class="col-name">SAHIL HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">166</td>
+        <td class="col-roll"><code>A230115</code></td>
+        <td class="col-name">FAIYAZ AHMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">167</td>
+        <td class="col-roll"><code>A230116</code></td>
+        <td class="col-name">MD ABDULLA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">168</td>
+        <td class="col-roll"><code>A230117</code></td>
+        <td class="col-name">MD ZEESHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">169</td>
+        <td class="col-roll"><code>A230118</code></td>
+        <td class="col-name">REHAN AFTAB KHAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">170</td>
+        <td class="col-roll"><code>A230119</code></td>
+        <td class="col-name">MOBASHSHAR FAHIM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">171</td>
+        <td class="col-roll"><code>A230120</code></td>
+        <td class="col-name">FAIJ AHAMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">172</td>
+        <td class="col-roll"><code>A230122</code></td>
+        <td class="col-name">RASHID HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">173</td>
+        <td class="col-roll"><code>A230123</code></td>
+        <td class="col-name">MD KAIF</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">174</td>
+        <td class="col-roll"><code>A230124</code></td>
+        <td class="col-name">HAMID ALI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">175</td>
+        <td class="col-roll"><code>A230125</code></td>
+        <td class="col-name">MOHAMMAD SAAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">176</td>
+        <td class="col-roll"><code>A230126</code></td>
+        <td class="col-name">MD SHAYAQUE PERWEZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">177</td>
+        <td class="col-roll"><code>A230129</code></td>
+        <td class="col-name">OSAMA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">178</td>
+        <td class="col-roll"><code>A230130</code></td>
+        <td class="col-name">SADIQUE ANWAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">179</td>
+        <td class="col-roll"><code>A230131</code></td>
+        <td class="col-name">MD RAYAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">180</td>
+        <td class="col-roll"><code>A230133</code></td>
+        <td class="col-name">MOHAMMAD UMAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">181</td>
+        <td class="col-roll"><code>A230135</code></td>
+        <td class="col-name">ZEESHAN AHMAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">182</td>
+        <td class="col-roll"><code>A230137</code></td>
+        <td class="col-name">MD SHAHNAWAZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">183</td>
+        <td class="col-roll"><code>A230139</code></td>
+        <td class="col-name">MOHAMMAD VAQQAS</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">184</td>
+        <td class="col-roll"><code>A231542</code></td>
+        <td class="col-name">YAMEEN ROUF</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">185</td>
+        <td class="col-roll"><code>A231543</code></td>
+        <td class="col-name">MOHSIN MANZOOR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">186</td>
+        <td class="col-roll"><code>A231609</code></td>
+        <td class="col-name">MOHD ZAID</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">187</td>
+        <td class="col-roll"><code>A231610</code></td>
+        <td class="col-name">MD MUJAMMIL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">188</td>
+        <td class="col-roll"><code>A240204</code></td>
+        <td class="col-name">MD SARFARAZ ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">189</td>
+        <td class="col-roll"><code>A240206</code></td>
+        <td class="col-name">KHALID HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">5</span>
+          <div>
+            <h2 class="group-title">M.Tech (Computer Science)</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>18</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">190</td>
+        <td class="col-roll"><code>26MTCS002HY</code></td>
+        <td class="col-name">MD BADREALAM KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">191</td>
+        <td class="col-roll"><code>26MTCS003HY</code></td>
+        <td class="col-name">MD NOOR ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">192</td>
+        <td class="col-roll"><code>26MTCS004HY</code></td>
+        <td class="col-name">MOHD HASAN NOORANI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">193</td>
+        <td class="col-roll"><code>26MTCS005HY</code></td>
+        <td class="col-name">NAGENDRA KUMAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">194</td>
+        <td class="col-roll"><code>26MTCS007HY</code></td>
+        <td class="col-name">MD HEMAYU ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">195</td>
+        <td class="col-roll"><code>26MTCS009HY</code></td>
+        <td class="col-name">MOHD AFZAL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">196</td>
+        <td class="col-roll"><code>26MTCS010HY</code></td>
+        <td class="col-name">MD ABU BAKAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">197</td>
+        <td class="col-roll"><code>26MTCS011HY</code></td>
+        <td class="col-name">ZAYAUDDIN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">198</td>
+        <td class="col-roll"><code>26MTCS012HY</code></td>
+        <td class="col-name">MD NADIM ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">199</td>
+        <td class="col-roll"><code>26MTCS013HY</code></td>
+        <td class="col-name">TAUSEEF AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">200</td>
+        <td class="col-roll"><code>26MTCS014HY</code></td>
+        <td class="col-name">NAYAB ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">201</td>
+        <td class="col-roll"><code>26MTCS016HY</code></td>
+        <td class="col-name">TAHSEEN RAZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">202</td>
+        <td class="col-roll"><code>26MTCS017HY</code></td>
+        <td class="col-name">MOHAMMAD ASAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">203</td>
+        <td class="col-roll"><code>26MTCS019HY</code></td>
+        <td class="col-name">AMIR KHUSROO</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">204</td>
+        <td class="col-roll"><code>26MTCS021HY</code></td>
+        <td class="col-name">MD MUDASSIR RAZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">205</td>
+        <td class="col-roll"><code>26MTCS022HY</code></td>
+        <td class="col-name">MOZAMMIL ANWAR</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">206</td>
+        <td class="col-roll"><code>26MTCS024HY</code></td>
+        <td class="col-name">MD FAIZAN HAMEED</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">207</td>
+        <td class="col-roll"><code>26MTCS025HY</code></td>
+        <td class="col-name">MD SARFRAZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">6</span>
+          <div>
+            <h2 class="group-title">M.Tech (Computer Science)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>16</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">208</td>
+        <td class="col-roll"><code>A180156</code></td>
+        <td class="col-name">MOKARRAM HUSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">209</td>
+        <td class="col-roll"><code>A191069</code></td>
+        <td class="col-name">MD MERAJUL HAQUE</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">210</td>
+        <td class="col-roll"><code>A191391</code></td>
+        <td class="col-name">SHADAB ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">211</td>
+        <td class="col-roll"><code>A192582</code></td>
+        <td class="col-name">Md Aquib</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">212</td>
+        <td class="col-roll"><code>A210026</code></td>
+        <td class="col-name">JANISHAR ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">213</td>
+        <td class="col-roll"><code>A210029</code></td>
+        <td class="col-name">MOTIURRAHMAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">214</td>
+        <td class="col-roll"><code>A210031</code></td>
+        <td class="col-name">MOHAMMAD ABDUL RAB</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">215</td>
+        <td class="col-roll"><code>A210033</code></td>
+        <td class="col-name">MOHAMMAD ARFEEN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">216</td>
+        <td class="col-roll"><code>A210055</code></td>
+        <td class="col-name">Mushfique Alam</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">217</td>
+        <td class="col-roll"><code>A210056</code></td>
+        <td class="col-name">MD MOHIBULLAH</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">218</td>
+        <td class="col-roll"><code>A210076</code></td>
+        <td class="col-name">uvaish Khan</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">219</td>
+        <td class="col-roll"><code>A231305</code></td>
+        <td class="col-name">SHADMAN KAUSAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">220</td>
+        <td class="col-roll"><code>A231661</code></td>
+        <td class="col-name">MOHAMMAD SHAMS TABREZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">221</td>
+        <td class="col-roll"><code>A250093</code></td>
+        <td class="col-name">SYED MOHAMMED MUSHARRAF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">222</td>
+        <td class="col-roll"><code>A250094</code></td>
+        <td class="col-name">MOHD JAMIL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">223</td>
+        <td class="col-roll"><code>A250095</code></td>
+        <td class="col-name">SHAIK TAUSEEF AHMED</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">7</span>
+          <div>
+            <h2 class="group-title">MCA</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>27</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">224</td>
+        <td class="col-roll"><code>A260061</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">225</td>
+        <td class="col-roll"><code>A260062</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">226</td>
+        <td class="col-roll"><code>A260063</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">227</td>
+        <td class="col-roll"><code>A260064</code></td>
+        <td class="col-name">Student 4</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">228</td>
+        <td class="col-roll"><code>A260065</code></td>
+        <td class="col-name">Student 5</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">229</td>
+        <td class="col-roll"><code>A260066</code></td>
+        <td class="col-name">Student 6</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">230</td>
+        <td class="col-roll"><code>A260067</code></td>
+        <td class="col-name">Student 7</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">231</td>
+        <td class="col-roll"><code>A260068</code></td>
+        <td class="col-name">Student 8</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">232</td>
+        <td class="col-roll"><code>A260069</code></td>
+        <td class="col-name">Student 9</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">233</td>
+        <td class="col-roll"><code>A260070</code></td>
+        <td class="col-name">Student 10</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">234</td>
+        <td class="col-roll"><code>A260071</code></td>
+        <td class="col-name">Student 11</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">235</td>
+        <td class="col-roll"><code>A260072</code></td>
+        <td class="col-name">Student 12</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">236</td>
+        <td class="col-roll"><code>A260073</code></td>
+        <td class="col-name">Student 13</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">237</td>
+        <td class="col-roll"><code>A260074</code></td>
+        <td class="col-name">Student 14</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">238</td>
+        <td class="col-roll"><code>A260075</code></td>
+        <td class="col-name">Student 15</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">239</td>
+        <td class="col-roll"><code>A260076</code></td>
+        <td class="col-name">Student 16</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">240</td>
+        <td class="col-roll"><code>A260077</code></td>
+        <td class="col-name">Student 17</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">241</td>
+        <td class="col-roll"><code>A260078</code></td>
+        <td class="col-name">Student 18</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">242</td>
+        <td class="col-roll"><code>A260079</code></td>
+        <td class="col-name">Student 19</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">243</td>
+        <td class="col-roll"><code>A260080</code></td>
+        <td class="col-name">Student 20</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">244</td>
+        <td class="col-roll"><code>A260081</code></td>
+        <td class="col-name">Student 21</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">245</td>
+        <td class="col-roll"><code>A260082</code></td>
+        <td class="col-name">Student 22</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">246</td>
+        <td class="col-roll"><code>A260083</code></td>
+        <td class="col-name">Student 23</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">247</td>
+        <td class="col-roll"><code>A260084</code></td>
+        <td class="col-name">Student 24</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">248</td>
+        <td class="col-roll"><code>A260085</code></td>
+        <td class="col-name">Student 25</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">249</td>
+        <td class="col-roll"><code>A260086</code></td>
+        <td class="col-name">Student 26</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">250</td>
+        <td class="col-roll"><code>A260087</code></td>
+        <td class="col-name">Student 27</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">8</span>
+          <div>
+            <h2 class="group-title">MCA</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>16</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">251</td>
+        <td class="col-roll"><code>A191388</code></td>
+        <td class="col-name">INTEZAR AZMI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">252</td>
+        <td class="col-roll"><code>A191389</code></td>
+        <td class="col-name">KHAJA EHTASHAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">253</td>
+        <td class="col-roll"><code>A200223</code></td>
+        <td class="col-name">SHAHRUKH AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">254</td>
+        <td class="col-roll"><code>A221834</code></td>
+        <td class="col-name">KHUWAJA ADIYAN FAIZANI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">255</td>
+        <td class="col-roll"><code>A250005</code></td>
+        <td class="col-name">MOHD IRFAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">256</td>
+        <td class="col-roll"><code>A250007</code></td>
+        <td class="col-name">MOHD AYAN ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">257</td>
+        <td class="col-roll"><code>A250009</code></td>
+        <td class="col-name">RAGIB ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">258</td>
+        <td class="col-roll"><code>A250010</code></td>
+        <td class="col-name">ZUBAIR ANSARI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">259</td>
+        <td class="col-roll"><code>A250011</code></td>
+        <td class="col-name">MOHD YASIR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">260</td>
+        <td class="col-roll"><code>A250012</code></td>
+        <td class="col-name">MOHAMMAD ANAS</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">261</td>
+        <td class="col-roll"><code>A250014</code></td>
+        <td class="col-name">IMRAN HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">262</td>
+        <td class="col-roll"><code>A250015</code></td>
+        <td class="col-name">HUZEFA BIN JUNED</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">263</td>
+        <td class="col-roll"><code>A250016</code></td>
+        <td class="col-name">MD AZHAR UDDIN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">264</td>
+        <td class="col-roll"><code>A250017</code></td>
+        <td class="col-name">SALEH HAYAT</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">265</td>
+        <td class="col-roll"><code>A250020</code></td>
+        <td class="col-name">ANSARI ABU HASSAN OZAIR AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">266</td>
+        <td class="col-roll"><code>A250021</code></td>
+        <td class="col-name">MOHAMMAD ISMAIL ALEMI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">9</span>
+          <div>
+            <h2 class="group-title">B.Tech Civil (SF)</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>29</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">267</td>
+        <td class="col-roll"><code>A260088</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">268</td>
+        <td class="col-roll"><code>A260089</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">269</td>
+        <td class="col-roll"><code>A260090</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">270</td>
+        <td class="col-roll"><code>A260091</code></td>
+        <td class="col-name">Student 4</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">271</td>
+        <td class="col-roll"><code>A260092</code></td>
+        <td class="col-name">Student 5</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">272</td>
+        <td class="col-roll"><code>A260093</code></td>
+        <td class="col-name">Student 6</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">273</td>
+        <td class="col-roll"><code>A260094</code></td>
+        <td class="col-name">Student 7</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">274</td>
+        <td class="col-roll"><code>A260095</code></td>
+        <td class="col-name">Student 8</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">275</td>
+        <td class="col-roll"><code>A260096</code></td>
+        <td class="col-name">Student 9</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">276</td>
+        <td class="col-roll"><code>A260097</code></td>
+        <td class="col-name">Student 10</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">277</td>
+        <td class="col-roll"><code>A260098</code></td>
+        <td class="col-name">Student 11</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">278</td>
+        <td class="col-roll"><code>A260099</code></td>
+        <td class="col-name">Student 12</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">279</td>
+        <td class="col-roll"><code>A260100</code></td>
+        <td class="col-name">Student 13</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">280</td>
+        <td class="col-roll"><code>A260101</code></td>
+        <td class="col-name">Student 14</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">281</td>
+        <td class="col-roll"><code>A260102</code></td>
+        <td class="col-name">Student 15</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">282</td>
+        <td class="col-roll"><code>A260103</code></td>
+        <td class="col-name">Student 16</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">283</td>
+        <td class="col-roll"><code>A260104</code></td>
+        <td class="col-name">Student 17</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">284</td>
+        <td class="col-roll"><code>A260105</code></td>
+        <td class="col-name">Student 18</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">285</td>
+        <td class="col-roll"><code>A260106</code></td>
+        <td class="col-name">Student 19</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">286</td>
+        <td class="col-roll"><code>A260107</code></td>
+        <td class="col-name">Student 20</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">287</td>
+        <td class="col-roll"><code>A260108</code></td>
+        <td class="col-name">Student 21</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">288</td>
+        <td class="col-roll"><code>A260109</code></td>
+        <td class="col-name">Student 22</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">289</td>
+        <td class="col-roll"><code>A260110</code></td>
+        <td class="col-name">Student 23</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">290</td>
+        <td class="col-roll"><code>A260111</code></td>
+        <td class="col-name">Student 24</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">291</td>
+        <td class="col-roll"><code>A260112</code></td>
+        <td class="col-name">Student 25</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">292</td>
+        <td class="col-roll"><code>A260113</code></td>
+        <td class="col-name">Student 26</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">293</td>
+        <td class="col-roll"><code>A260114</code></td>
+        <td class="col-name">Student 27</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">294</td>
+        <td class="col-roll"><code>A260115</code></td>
+        <td class="col-name">Student 28</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">295</td>
+        <td class="col-roll"><code>A260116</code></td>
+        <td class="col-name">Student 29</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">10</span>
+          <div>
+            <h2 class="group-title">B.Tech Civil (SF)</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>34</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">296</td>
+        <td class="col-roll"><code>A210385</code></td>
+        <td class="col-name">IRFAN JAMIL</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">297</td>
+        <td class="col-roll"><code>A210728</code></td>
+        <td class="col-name">MD NEMATULLAH</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">298</td>
+        <td class="col-roll"><code>A220904</code></td>
+        <td class="col-name">RAMISH IQBAL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">299</td>
+        <td class="col-roll"><code>A220909</code></td>
+        <td class="col-name">ARMAN ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">300</td>
+        <td class="col-roll"><code>A221099</code></td>
+        <td class="col-name">MD FAIZAN SHAMS</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">301</td>
+        <td class="col-roll"><code>A252175</code></td>
+        <td class="col-name">MD INFAQUE</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">302</td>
+        <td class="col-roll"><code>A252177</code></td>
+        <td class="col-name">MD SUHEB ANSARI</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">303</td>
+        <td class="col-roll"><code>A252178</code></td>
+        <td class="col-name">MOHAMMED JAFAR SAIFULLAH</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">304</td>
+        <td class="col-roll"><code>A252180</code></td>
+        <td class="col-name">MD SARFARAJ KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">305</td>
+        <td class="col-roll"><code>A252181</code></td>
+        <td class="col-name">YASIR HAMEED</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">306</td>
+        <td class="col-roll"><code>A252183</code></td>
+        <td class="col-name">MD IMTIYAZ HUSSAIN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">307</td>
+        <td class="col-roll"><code>A252186</code></td>
+        <td class="col-name">MOHAMMAD WASIM RAZA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">308</td>
+        <td class="col-roll"><code>A252187</code></td>
+        <td class="col-name">HAMMAD RAZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">309</td>
+        <td class="col-roll"><code>A252188</code></td>
+        <td class="col-name">TABREJ ALAM</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">310</td>
+        <td class="col-roll"><code>A252189</code></td>
+        <td class="col-name">SABIH SHAMSHAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">311</td>
+        <td class="col-roll"><code>A252190</code></td>
+        <td class="col-name">MD ASHIF</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">312</td>
+        <td class="col-roll"><code>A252191</code></td>
+        <td class="col-name">MD EKRAMA KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">313</td>
+        <td class="col-roll"><code>A252192</code></td>
+        <td class="col-name">AFZAL RAZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">314</td>
+        <td class="col-roll"><code>A252193</code></td>
+        <td class="col-name">MD SAHIL ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">315</td>
+        <td class="col-roll"><code>A252194</code></td>
+        <td class="col-name">ASHIR IRFAN</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">316</td>
+        <td class="col-roll"><code>A252195</code></td>
+        <td class="col-name">MOHAMMAD ARIF</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">317</td>
+        <td class="col-roll"><code>A252196</code></td>
+        <td class="col-name">MD WARIS NADEEM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">318</td>
+        <td class="col-roll"><code>A252197</code></td>
+        <td class="col-name">MOHAMMAD AARIZ</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">319</td>
+        <td class="col-roll"><code>A252198</code></td>
+        <td class="col-name">MD KAIF ALI KHAN</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">320</td>
+        <td class="col-roll"><code>A252199</code></td>
+        <td class="col-name">MD NISHAD</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">321</td>
+        <td class="col-roll"><code>A252200</code></td>
+        <td class="col-name">SHARJEEL AKHTAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">322</td>
+        <td class="col-roll"><code>A252201</code></td>
+        <td class="col-name">KAMAR REZA</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">323</td>
+        <td class="col-roll"><code>A252203</code></td>
+        <td class="col-name">MD LALBABU</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">324</td>
+        <td class="col-roll"><code>A252204</code></td>
+        <td class="col-name">MIRSAB ALI HAIDER</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">325</td>
+        <td class="col-roll"><code>A252205</code></td>
+        <td class="col-name">AZHAR ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">326</td>
+        <td class="col-roll"><code>A252207</code></td>
+        <td class="col-name">MADANPALLI MOHAMMED</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">327</td>
+        <td class="col-roll"><code>A252208</code></td>
+        <td class="col-name">MD IZAANUL HAQUE</td>
+        <td class="col-res"><span class="badge badge-hostel">Hostel</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">328</td>
+        <td class="col-roll"><code>A252261</code></td>
+        <td class="col-name">MOHAMMAD IBRAHIM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">329</td>
+        <td class="col-roll"><code>A252262</code></td>
+        <td class="col-name">SYED GHOUSE PASHA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">11</span>
+          <div>
+            <h2 class="group-title">B.Sc Fashion Technology</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>11</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">330</td>
+        <td class="col-roll"><code>A260117</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">331</td>
+        <td class="col-roll"><code>A260118</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">332</td>
+        <td class="col-roll"><code>A260119</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">333</td>
+        <td class="col-roll"><code>A260120</code></td>
+        <td class="col-name">Student 4</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">334</td>
+        <td class="col-roll"><code>A260121</code></td>
+        <td class="col-name">Student 5</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">335</td>
+        <td class="col-roll"><code>A260122</code></td>
+        <td class="col-name">Student 6</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">336</td>
+        <td class="col-roll"><code>A260123</code></td>
+        <td class="col-name">Student 7</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">337</td>
+        <td class="col-roll"><code>A260124</code></td>
+        <td class="col-name">Student 8</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">338</td>
+        <td class="col-roll"><code>A260125</code></td>
+        <td class="col-name">Student 9</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">339</td>
+        <td class="col-roll"><code>A260126</code></td>
+        <td class="col-name">Student 10</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">340</td>
+        <td class="col-roll"><code>A260127</code></td>
+        <td class="col-name">Student 11</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">12</span>
+          <div>
+            <h2 class="group-title">Diploma Fashion Technology</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>3</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">341</td>
+        <td class="col-roll"><code>A260164</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">342</td>
+        <td class="col-roll"><code>A260165</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">343</td>
+        <td class="col-roll"><code>A260166</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">13</span>
+          <div>
+            <h2 class="group-title">Diploma Fashion Technology</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>2</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">344</td>
+        <td class="col-roll"><code>A252313</code></td>
+        <td class="col-name">RASHID ALI</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">345</td>
+        <td class="col-roll"><code>A252315</code></td>
+        <td class="col-name">MD HASIM ALAM</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">14</span>
+          <div>
+            <h2 class="group-title">B.Sc Interior Design</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>11</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">346</td>
+        <td class="col-roll"><code>A260128</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">347</td>
+        <td class="col-roll"><code>A260129</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">348</td>
+        <td class="col-roll"><code>A260130</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">349</td>
+        <td class="col-roll"><code>A260131</code></td>
+        <td class="col-name">Student 4</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">350</td>
+        <td class="col-roll"><code>A260132</code></td>
+        <td class="col-name">Student 5</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">351</td>
+        <td class="col-roll"><code>A260133</code></td>
+        <td class="col-name">Student 6</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">352</td>
+        <td class="col-roll"><code>A260134</code></td>
+        <td class="col-name">Student 7</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">353</td>
+        <td class="col-roll"><code>A260135</code></td>
+        <td class="col-name">Student 8</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">354</td>
+        <td class="col-roll"><code>A260136</code></td>
+        <td class="col-name">Student 9</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">355</td>
+        <td class="col-roll"><code>A260137</code></td>
+        <td class="col-name">Student 10</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">356</td>
+        <td class="col-roll"><code>A260138</code></td>
+        <td class="col-name">Student 11</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">15</span>
+          <div>
+            <h2 class="group-title">B.Sc Interior Design</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>5</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">357</td>
+        <td class="col-roll"><code>A210518</code></td>
+        <td class="col-name">SHADAB ANWER</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">358</td>
+        <td class="col-roll"><code>A252325</code></td>
+        <td class="col-name">MOHAMMAD JUNAID ASGHAR</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">359</td>
+        <td class="col-roll"><code>A252331</code></td>
+        <td class="col-name">NAFEES AHMAD</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">360</td>
+        <td class="col-roll"><code>A252504</code></td>
+        <td class="col-name">AKULA BALA CHAKRI SAI MANIKANTA</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">361</td>
+        <td class="col-roll"><code>A252505</code></td>
+        <td class="col-name">SYED AFTAB</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">16</span>
+          <div>
+            <h2 class="group-title">B.Sc Interior Design</h2>
+            <div class="group-subtitle">3rd Year &bull; Total Candidates: <strong>1</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">362</td>
+        <td class="col-roll"><code>A242550</code></td>
+        <td class="col-name">MOHAMMED USMAN SOHAIL</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">17</span>
+          <div>
+            <h2 class="group-title">Diploma Interior Design</h2>
+            <div class="group-subtitle">1st Year &bull; Total Candidates: <strong>3</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">363</td>
+        <td class="col-roll"><code>A260167</code></td>
+        <td class="col-name">Student 1</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">364</td>
+        <td class="col-roll"><code>A260168</code></td>
+        <td class="col-name">Student 2</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+      <tr>
+        <td class="col-num">365</td>
+        <td class="col-roll"><code>A260169</code></td>
+        <td class="col-name">Student 3</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="group-section page-break-before">
+      <div class="group-header">
+        <div class="group-title-wrap">
+          <span class="group-badge">18</span>
+          <div>
+            <h2 class="group-title">Diploma Interior Design</h2>
+            <div class="group-subtitle">2nd Year &bull; Total Candidates: <strong>1</strong></div>
+          </div>
+        </div>
+        <div class="group-meta">Official Male Roll</div>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 45px; text-align: center;">#</th>
+            <th style="width: 130px;">Roll Number</th>
+            <th>Candidate Full Name</th>
+            <th style="width: 90px; text-align: center;">Residence</th>
+            <th style="width: 90px; text-align: center;">Poll Status</th>
+            <th style="width: 140px; text-align: center;">Voter Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-num">366</td>
+        <td class="col-roll"><code>A210066</code></td>
+        <td class="col-name">YAQOOB</td>
+        <td class="col-res"><span class="badge badge-outside">Outside</span></td>
+        <td class="col-status"><span class="status-pending">PENDING</span></td>
+        <td class="col-sign"><div class="sign-box"></div></td>
+      </tr>
+    
+        </tbody>
+      </table>
+    </div>
+  
+
+  <!-- Final Signature Section -->
+  <div class="officer-signatures">
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Presiding Officer (Boys Booth)</div>
+      <div class="officer-desc">Signature & Date Stamp</div>
+    </div>
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Polling Agent / Observer</div>
+      <div class="officer-desc">Student Council Election Desk</div>
+    </div>
+    <div class="officer-box">
+      <div class="officer-line"></div>
+      <div class="officer-title">Chief Election Officer</div>
+      <div class="officer-desc">Official Certification Seal</div>
+    </div>
+  </div>
+
+</body>
+</html>
