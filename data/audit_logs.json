@@ -1,14 +1,29 @@
 [
   {
+    "id": "audit_1792017611887_1zpiq7",
+    "timestamp": "2026-10-14T22:40:11.887Z",
+    "action": "AGENT_LOGIN",
+    "actor_username": "agent",
+    "actor_name": "Polling Agent / Officer",
+    "actor_role": "editor",
+    "details": "Polling Agent / Officer (@agent) authenticated and signed into Polling Desk session"
+  },
+  {
+    "id": "audit_1792017596529_lxkoyv",
+    "timestamp": "2026-10-14T22:39:56.529Z",
+    "action": "AGENT_LOGIN",
+    "actor_username": "admin",
+    "actor_name": "Chief Election Officer",
+    "actor_role": "admin",
+    "details": "Chief Election Officer (@admin) authenticated and signed into Polling Desk session"
+  },
+  {
     "id": "audit_1792017065580_9oxmk9",
     "timestamp": "2026-10-14T22:31:05.580Z",
     "action": "AGENT_LOGOUT",
     "actor_username": "agent",
     "actor_name": "Polling Agent / Officer",
     "actor_role": "editor",
-    "target_id": null,
-    "target_name": null,
-    "target_roll": null,
     "details": "Polling Agent / Officer (@agent) logged out from Polling Desk session"
   },
   {
@@ -20,7 +35,6 @@
     "actor_role": "editor",
     "target_id": "sample_student_1",
     "target_name": "Candidate",
-    "target_roll": null,
     "details": "Unmarked vote for Candidate (ID: dent_1) — Attendance status reset to \"Pending\""
   },
   {
@@ -32,7 +46,6 @@
     "actor_role": "editor",
     "target_id": "sample_student_1",
     "target_name": "Candidate",
-    "target_roll": null,
     "details": "Marked ballot attendance for Candidate (ID: dent_1) as VOTED"
   },
   {
@@ -42,9 +55,6 @@
     "actor_username": "agent",
     "actor_name": "Polling Agent / Officer",
     "actor_role": "editor",
-    "target_id": null,
-    "target_name": null,
-    "target_roll": null,
     "details": "Polling Agent / Officer (@agent) authenticated and signed into Polling Desk session"
   },
   {
@@ -54,9 +64,6 @@
     "actor_username": "agent",
     "actor_name": "Polling Agent / Officer",
     "actor_role": "editor",
-    "target_id": null,
-    "target_name": null,
-    "target_roll": null,
     "details": "Polling Agent / Officer (@agent) authenticated and signed into Polling Desk session"
   },
   {
@@ -66,9 +73,6 @@
     "actor_username": "admin",
     "actor_name": "Chief Election Officer",
     "actor_role": "admin",
-    "target_id": null,
-    "target_name": null,
-    "target_roll": null,
     "details": "Chief Election Officer (@admin) authenticated and signed into Polling Desk session"
   }
 ]
